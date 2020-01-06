@@ -9,8 +9,8 @@ Now you can work only with the **Client Card**. Other features coming soon!
 ![Screenshot](1_screen.jpg)
 ![Screenshot](2_screen.jpg)
 
-2. **Add maven dependency** 
-
+2. **Add Maven dependency** 
+```xml
 <repositories>
 		<repository>
 			<id>bitrix24-java-api-mvn-repo</id>
@@ -20,10 +20,11 @@ Now you can work only with the **Client Card**. Other features coming soon!
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
-	</repositories>
-  
-  <dependency>
+</repositories>
+
+<dependency>
 			<groupId>com.javastream</groupId>
 			<artifactId>java-bitrix24-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+ </dependency>
+  ```
