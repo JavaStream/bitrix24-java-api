@@ -90,7 +90,7 @@ client.getContactService().addNewContact(contact);
 // Init Client
 Client client = new Client("token", "your-account.bitrix24.ru");
 
-// We get the contact card by contact ID
+// We get the contact card by contact ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
 
 ```
