@@ -33,12 +33,14 @@ Now you can work only with the **Client Card**. Other features coming soon!
 You need insert yours Token and bitrix-account. It's easy!
 
 ```java
+// Init Client
 Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
 ```
 
 4. **Create New Contact**
 
 ```java
+// Init Client
 Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
 
 // Create a new Contact card and fill in its fields
@@ -61,20 +63,20 @@ contact.add_post("Manager");
 // Attach a company card (requires company ID)
 contact.add_company(2);
 
-//Adding a phone. Phone type is set in Phone_type
+// Adding a phone. Phone type is set in Phone_type
 contact.add_phone("89119500085", Phone_type.MOBILE);
 contact.add_phone("500-00-90", Phone_type.WORK);
 contact.add_phone("500-00-92", Phone_type.FAX);
 
-//Adding email. Phone type is set in Email_type
+// Adding email. Phone type is set in Email_type
 contact.add_email("robert@gmail.com", Email_type.PRIVATE);
 contact.add_email("robert.dia@digital.com", Email_type.WORK);
 
-//Adding a site. Phone type is set in Website_type
+// Adding a site. Phone type is set in Website_type
 contact.add_website("www.digital.com", Website_type.WORK);
 contact.add_website("www.facebook.com/robert", Website_type.FACEBOOK);
 
-//Adding instant messengers. Messengers type is set in Messengers_type
+// Adding instant messengers. Messengers type is set in Messengers_type
 contact.add_messenger("roby-tgr", Messengers_type.TELEGRAM);
 contact.add_messenger("roby-van", Messengers_type.VIBER);
 
@@ -82,3 +84,13 @@ contact.add_messenger("roby-van", Messengers_type.VIBER);
 client.getContactService().addNewContact(contact);
 ```
 
+5. **Get Contact By Id**
+
+```java
+// Init Client
+Client client = new Client("token", "your-account.bitrix24.ru");
+
+// We get the contact card by contact ID
+Contact contact = client.getContactService().getContactById(74);
+
+```
