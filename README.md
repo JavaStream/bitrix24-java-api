@@ -6,6 +6,6 @@ Now you can work only with the **Client Card**. Other features coming soon!
 
 ### Connection and functionalities:
 1. **Create account and webhook token**
-![Alt text](https://github.com/JavaStream/bitrix24-java-api/screenshots/create account in bitrix24.mp4 "Creating Bitrix24 token")
+https://github.com/JavaStream/bitrix24-java-api/screenshots/create_bitrix24_token.mp4
 
 2. **Create new Contact** 
