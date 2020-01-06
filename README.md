@@ -41,7 +41,7 @@ Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
 ```java
 Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
 
-// Create a new customer card and fill in its fields
+// Create a new Contact card and fill in its fields
 Contact contact = new Contact();
 
 // Mandatory method. Without the name and lastName parameters, the card cannot be saved.
