@@ -34,14 +34,14 @@ You need insert yours Token and bitrix-account. It's easy!
 
 ```java
 // Init Client
-Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
+Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
 4. **Create New Contact**
 
 ```java
 // Init Client
-Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
+Client client = new Client("token", "your-account.bitrix24.ru");
 
 // Create a new Contact card and fill in its fields
 Contact contact = new Contact();
