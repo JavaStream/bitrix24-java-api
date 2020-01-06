@@ -104,7 +104,7 @@ Client client = new Client("token", "your-account.bitrix24.ru");
 client.getContactService().deleteContactById(72);
 ```
 
-7. **Add Company Into Existing Contact By Id**
+7. **Add or Remove Company Into Existing Contact By Id**
 
 ```java
 // Init Client
@@ -118,5 +118,8 @@ contact.setCOMPANY_ID("2");
 
 // Second way
 contact.add_company(2);
+
+// Remove this company from this contact card (first parameter - ContactID, second param - CompanyID)
+client.getContactService().deleteCompanyFromExistingContactById(74, 2);
 ```
 
