@@ -29,7 +29,7 @@ Now you can work only with the **Client Card**. Other features coming soon!
  </dependency>
   ```
 
-3. **Init Client in your project**
+3. **Init Client in your project.**
 You need insert yours Token and bitrix-account. It's easy!
 
 ```java
