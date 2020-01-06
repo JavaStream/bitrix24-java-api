@@ -28,3 +28,10 @@ Now you can work only with the **Client Card**. Other features coming soon!
     <version>0.0.1-SNAPSHOT</version>
  </dependency>
   ```
+
+3. **Init Client in your project**
+You need insert yours Token and bitrix-account. It's easy!
+
+```java
+Client client = new Client("mlqg5ktzo5pd2244", "b24-yv2vtt.bitrix24.ru");
+```
