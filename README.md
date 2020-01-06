@@ -12,19 +12,19 @@ Now you can work only with the **Client Card**. Other features coming soon!
 2. **Add Maven dependency** 
 ```xml
 <repositories>
-		<repository>
-			<id>bitrix24-java-api-mvn-repo</id>
-			<url>https://raw.github.com/JavaStream/bitrix24-java-api/mvn-repo/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
+   <repository>
+      <id>bitrix24-java-api-mvn-repo</id>
+	  <url>https://raw.github.com/JavaStream/bitrix24-java-api/mvn-repo/</url>
+		 <snapshots>
+		     <enabled>true</enabled>
+			  <updatePolicy>always</updatePolicy>
+		 </snapshots>
+   </repository>
 </repositories>
 
 <dependency>
-			<groupId>com.javastream</groupId>
-			<artifactId>java-bitrix24-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+    <groupId>com.javastream</groupId>
+    <artifactId>java-bitrix24-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
  </dependency>
   ```
