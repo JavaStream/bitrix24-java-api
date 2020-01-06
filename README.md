@@ -7,6 +7,7 @@ Now you can work only with the **Client Card**. Other features coming soon!
 ### Connection and functionalities:
 1. **Create account and webhook token**
 ![Screenshot](1_screen.jpg)
+
 ![Screenshot](2_screen.jpg)
 
 2. **Create new Contact** 
