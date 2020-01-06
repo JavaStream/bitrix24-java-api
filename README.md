@@ -123,3 +123,36 @@ contact.add_company(2);
 client.getContactService().deleteCompanyFromExistingContactById(74, 2);
 ```
 
+
+8. **Update Contact**
+
+```java
+// Init Client
+Client client = new Client("token", "your-account.bitrix24.ru");
+
+// We get the contact card by contact ID (For example, 74)
+Contact contact = client.getContactService().getContactById(74);
+
+// Simple fields like String can just set new data
+contact.setCOMPANY_ID("2");
+contact.setNAME("Джон");
+
+// In multiple fields containing lists, the data is entered differently (for example, Phone)
+// 1. Add a new phone. Do not specify ID and ID_Type (will be assigned to CRM itself)
+Phone phone = Phone.builder()
+      .VALUE("600-00-00").VALUE_TYPE(Phone_type.MOBILE.getCode()).build();
+List<Phone> listPhone = new ArrayList<>();
+listPhone.add(phone);
+contact.setPHONE(listPhone);
+client.getContactService().updateContact(contact);
+
+
+// 2. Change an existing phone (Get the Phone object, set new values for Value and (or) Value_type). 
+// For example, I change the first phone
+Phone phone = contact.getPHONE().get(0);
+phone.setVALUE("222-22-22");
+List<Phone> phoneList = new ArrayList<>();
+phoneList.add(phone);
+contact.setPHONE(phoneList);
+client.getContactService().updateContact(contact);
+```
