@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.javastream</groupId>
+  <artifactId>java-bitrix24-api</artifactId>
+  <versioning>
+    <versions>
+      <version>0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200106182044</lastUpdated>
+  </versioning>
+</metadata>
