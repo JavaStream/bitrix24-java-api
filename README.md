@@ -94,3 +94,29 @@ Client client = new Client("token", "your-account.bitrix24.ru");
 Contact contact = client.getContactService().getContactById(74);
 
 ```
+
+
+6. **Delete Contact By Id**
+
+```java
+Client client = new Client("token", "your-account.bitrix24.ru");
+
+client.getContactService().deleteContactById(72);
+```
+
+7. **Add Company Into Existing Contact By Id**
+
+```java
+// Init Client
+Client client = new Client("token", "your-account.bitrix24.ru");
+
+// We get the contact card by contact ID (For example, 74)
+Contact contact = client.getContactService().getContactById(74);
+
+// The first way is to set the COMPANY_ID field. Here is the ID of a company already created in CRM
+contact.setCOMPANY_ID("2");
+
+// Second way
+contact.add_company(2);
+```
+
