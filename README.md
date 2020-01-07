@@ -2,14 +2,14 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work only with the **Client Card**. Other features coming soon!
+Now you can work only with the **Client Card and Lead**. Other features coming soon!
 
 ### Connection and functionalities:
-1. **Create account and webhook token**
+I. **Create account and webhook token**
 ![Screenshot](1_screen.jpg)
 ![Screenshot](2_screen.jpg)
 
-2. **Add Maven dependency** 
+II. **Add Maven dependency** 
 ```xml
 <repositories>
    <repository>
@@ -29,7 +29,7 @@ Now you can work only with the **Client Card**. Other features coming soon!
  </dependency>
   ```
 
-3. **Init Client in your project.**
+III. **Init Client in your project.**
 You need insert yours Token and bitrix-account. It's easy!
 
 ```java
@@ -37,12 +37,10 @@ You need insert yours Token and bitrix-account. It's easy!
 Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
-4. **Create New Contact**
+**Contacts**
+1.1. **Create New Contact**
 
 ```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
 // Create a new Contact card and fill in its fields
 Contact contact = new Contact();
 
@@ -84,52 +82,25 @@ contact.add_messenger("roby-van", Messengers_type.VIBER);
 client.getContactService().addNewContact(contact);
 ```
 
-5. **Get Contact By Id**
+1.2. **Get Contact By Id**
 
 ```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
 // We get the contact card by contact ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
 
 ```
 
 
-6. **Delete Contact By Id**
+1.3. **Delete Contact By Id**
 
 ```java
-Client client = new Client("token", "your-account.bitrix24.ru");
-
 client.getContactService().deleteContactById(72);
 ```
 
-7. **Add or Remove Company Into Existing Contact By Id**
+
+1.4. **Update Contact**
 
 ```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
-// We get the contact card by contact ID (For example, 74)
-Contact contact = client.getContactService().getContactById(74);
-
-// The first way is to set the COMPANY_ID field. Here is the ID of a company already created in CRM
-contact.setCOMPANY_ID("2");
-
-// Second way
-contact.add_company(2);
-
-// Remove this company from this contact card (first parameter - ContactID, second param - CompanyID)
-client.getContactService().deleteCompanyFromExistingContactById(74, 2);
-```
-
-
-8. **Update Contact**
-
-```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
 // We get the contact card by contact ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
 
@@ -155,4 +126,64 @@ List<Phone> phoneList = new ArrayList<>();
 phoneList.add(phone);
 contact.setPHONE(phoneList);
 client.getContactService().updateContact(contact);
+```
+
+
+**Lead**
+1.1. **Create New Lead**
+
+```java
+ Lead lead = new Lead();
+ lead.add_title("Torrentino");
+
+// Save new Lead
+client.getLeadService().addNewLead(lead);
+```
+
+1.2. **Get Lead by ID**
+```java
+// Get lead by ID = 4
+Lead lead = client.getLeadService().getLeadById(4);
+```
+
+1.3. **Delete Lead by ID**
+```java
+// Delete lead by ID = 4
+client.getLeadService().deleteLeadById(4);
+```
+
+1.4. **Update Lead**
+```java
+// Get lead by ID = 4
+Lead lead = client.getLeadService().getLeadById(4);
+
+// Simple fields (like String) can just set new data
+lead.setNAME("Albert");
+lead.setLAST_NAME("Shtein");
+lead.setADDRESS("West Olympic Boulevard Apt. 100");
+lead.setCOMMENTS("Interested in price");
+lead.setSTATUS_ID(StatusID_type.NEW.getCode());
+lead.setCURRENCY_ID(CurrencyID_type.EUR.getCode());
+lead.setSOURCE_ID(SourceID_type.RECOMMENDATION.getCode());
+	
+// In multiple fields containing lists, the data is entered differently (for example, Phone, Email, Website, IM)
+// 1. Add a new Email. Do not specify ID and ID_Type (will be assigned to CRM itself)
+
+Email email = Email.builder()
+	.VALUE("albert@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
+List<Email> listEmail = new ArrayList<>();
+listEmail.add(email);
+lead.setEMAIL(listEmail);
+client.getLeadService().updateLead(lead);
+
+
+// 2. Change an existing Website (Get the Website object, set new values for Value and (or) Value_type). 
+// For example, I change the first website
+Website website = lead.getWEB().get(0);
+website.setVALUE("www.albert-best.org");
+website.setVALUE_TYPE(Website_type.OTHER.getCode());
+List<Website> websitList = new ArrayList<>();
+websitList.add(website);
+lead.setWEB(websitList);
+client.getLeadService().updateLead(lead);	
 ```
