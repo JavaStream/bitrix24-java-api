@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.javastream</groupId>
 	<artifactId>java-bitrix24-api</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>java-bitrix24-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Java API for Bitrix24</description>
 
 	<properties>
 		<java.version>1.8</java.version>
