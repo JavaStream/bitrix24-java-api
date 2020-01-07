@@ -38,6 +38,7 @@ Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
 **Contacts**
+
 1.1. **Create New Contact**
 
 ```java
@@ -130,6 +131,7 @@ client.getContactService().updateContact(contact);
 
 
 **Lead**
+
 1.1. **Create New Lead**
 
 ```java
