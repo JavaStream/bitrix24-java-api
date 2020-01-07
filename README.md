@@ -194,28 +194,28 @@ client.getLeadService().updateLead(lead);
 The way of working with the Company is the same as with other entities.
 
 ```java
-1. // Create New Company and set fields you need
+//1. Create New Company and set fields you need
 Company company = new Company();
 company.add_companyTitle("LLT Prizma");
 company.add_companyType(Company_type.PARTNER);
 company.add_employeesType(Employees_type.FROM_250_TO_500);
 company.add_industryType(Industry_type.BANKING);
 
-2. // Get company by ID = 2
+//2. Get company by ID = 2
 Company company = client.getCempanyService().getCompanyById(2);
 
-3. // Delete company by ID = 3
+//3. Delete company by ID = 3
 client.getCempanyService().deleteCompanyById(3);
 
-4. Update company
+//4. Update company
 Company company = client.getCempanyService().getCompanyById(2);
-// Update simple fields
+//4.1. Update simple fields
 company.setBANKING_DETAILS("r/s 40702810865698252");
 company.setCOMPANY_TYPE(Company_type.SUPPLIER.getCode());
 company.setADDRESS("Olympic Boulevard Apt. 120");
 company.setCOMMENTS("Interested in price");
 
-// Update multiple fields Website
+//4.2. Update multiple fields Website
 Website website = company.getWEB().get(0);
 website.setVALUE("www.albert12.org");
 website.setVALUE_TYPE(Website_type.OTHER.getCode());
@@ -225,7 +225,7 @@ company.setWEB(websitList);
 client.getCempanyService().updateCompany(company);
 
 
-5. Add multiple fields (for example, Email)
+//5. Add multiple fields (for example, Email)
 Company company = client.getCempanyService().getCompanyById(2);
 List<Email> listEmail = new ArrayList<>();
 Email email = Email.builder()
