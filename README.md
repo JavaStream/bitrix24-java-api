@@ -170,7 +170,6 @@ lead.setSOURCE_ID(SourceID_type.RECOMMENDATION.getCode());
 	
 // In multiple fields containing lists, the data is entered differently (for example, Phone, Email, Website, IM)
 // 1. Add a new Email. Do not specify ID and ID_Type (will be assigned to CRM itself)
-
 Email email = Email.builder()
 	.VALUE("albert@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
 List<Email> listEmail = new ArrayList<>();
