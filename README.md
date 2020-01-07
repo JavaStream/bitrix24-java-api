@@ -190,6 +190,7 @@ client.getLeadService().updateLead(lead);
 ```
 
 **Company**
+
 The way of working with the Company is the same as with other entities.
 
 ```java
