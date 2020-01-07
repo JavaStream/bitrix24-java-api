@@ -2,7 +2,7 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work with **Client Cards and Leads**. Other features coming soon!
+Now you can work with **Client's Card and Leads**. Other features coming soon!
 
 ### Connection and functionalities:
 I. **Create account and webhook token**
