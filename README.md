@@ -2,7 +2,7 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work with **Client's Card and Leads**. Other features coming soon!
+Now you can work with **Client Card, Lead and Company**. Other features coming soon!
 
 ### Connection and functionalities:
 I. **Create account and webhook token**
@@ -25,7 +25,7 @@ II. **Add Maven dependency**
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
  </dependency>
   ```
 
