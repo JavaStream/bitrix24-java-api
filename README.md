@@ -223,7 +223,7 @@ websitList.add(website);
 company.setWEB(websitList);
 client.getCempanyService().updateCompany(company);
 
-5. Add new Email in Company
+5. Add Email in Company
 Company company = client.getCempanyService().getCompanyById(2);
 List<Email> listEmail = new ArrayList<>();
 Email email = Email.builder()
