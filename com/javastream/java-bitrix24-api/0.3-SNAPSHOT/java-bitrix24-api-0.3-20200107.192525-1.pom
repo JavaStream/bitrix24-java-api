@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.javastream</groupId>
 	<artifactId>java-bitrix24-api</artifactId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.3-SNAPSHOT</version>
 	<name>java-bitrix24-api</name>
 	<description>Java API for Bitrix24</description>
 
