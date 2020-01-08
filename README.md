@@ -45,39 +45,16 @@ Client client = new Client("token", "your-account.bitrix24.ru");
 // Create a new Contact card and fill in its fields
 Contact contact = new Contact();
 
-// Mandatory method. Without the name and lastName parameters, the card cannot be saved.
+// Mandatory fields name and lastName. Without the name and lastName parameters, the card cannot be saved.
 contact.add_name_and_lastName("Robert", "Kane");
 
 contact.setLAST_NAME("Edward");
-
-// Contact type -> in Type_id you can select 1 of 4 options
 contact.setTYPE_ID(Type_id.CLIENT.getCode());
-
-// Comment field
 contact.add_comments("He is the best");
-
-// Post field
 contact.add_post("Manager");
 
 // Attach a company card (requires company ID)
 contact.add_company(2);
-
-// Adding a phone. Phone type is set in Phone_type
-contact.add_phone("89119500085", Phone_type.MOBILE);
-contact.add_phone("500-00-90", Phone_type.WORK);
-contact.add_phone("500-00-92", Phone_type.FAX);
-
-// Adding email. Phone type is set in Email_type
-contact.add_email("robert@gmail.com", Email_type.PRIVATE);
-contact.add_email("robert.dia@digital.com", Email_type.WORK);
-
-// Adding a site. Phone type is set in Website_type
-contact.add_website("www.digital.com", Website_type.WORK);
-contact.add_website("www.facebook.com/robert", Website_type.FACEBOOK);
-
-// Adding instant messengers. Messengers type is set in Messengers_type
-contact.add_messenger("roby-tgr", Messengers_type.TELEGRAM);
-contact.add_messenger("roby-van", Messengers_type.VIBER);
 
 // At the end Save the created contact in CRM
 client.getContactService().addNewContact(contact);
@@ -88,9 +65,7 @@ client.getContactService().addNewContact(contact);
 ```java
 // We get the contact card by contact ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
-
 ```
-
 
 1.3. **Delete Contact By Id**
 
