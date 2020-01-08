@@ -45,7 +45,7 @@ Client client = new Client("token", "your-account.bitrix24.ru");
 // Create a new Contact card and fill in its fields
 Contact contact = new Contact();
 
-// Mandatory fields name and lastName. Without the name and lastName parameters, the card cannot be saved.
+// Name and lastName are mandatory fields. Without these parameters, the card cannot be saved.
 contact.add_name_and_lastName("Robert", "Kane");
 
 contact.setLAST_NAME("Edward");
