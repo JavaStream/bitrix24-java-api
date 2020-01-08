@@ -2,7 +2,7 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work with **Client Card, Lead and Company**. Other features coming soon!
+Now you can work with **Client Card, Lead, Company and Product Section**. Other features coming soon!
 
 ### Connection and functionalities:
 I. **Create account and webhook token**
@@ -233,4 +233,17 @@ Email email = Email.builder()
 listEmail.add(email);
 company.setEMAIL(listEmail);
 client.getCempanyService().updateCompany(company);
+```
+
+**Product Section**
+```java
+// Create
+ProductSection productSection = new ProductSection();
+productSection.add_name("Auto");
+productSection.setSECTION_ID(12);  // ID of Main category
+
+// Get, Delete and Update 
+ProductSection productSection = client.getProductSectionService().getProductSection(16);
+client.getProductSectionService().deleteProductSection(2);
+client.getProductSectionService().updateProductSection(productSection);
 ```
