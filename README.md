@@ -107,7 +107,7 @@ Contact contact = client.getContactService().getContactById(74);
 
 // Simple fields like String can just set new data
 contact.setCOMPANY_ID("2");
-contact.setNAME("Джон");
+contact.setNAME("John");
 
 // In multiple fields containing lists, the data is entered differently (for example, Phone)
 // 1. Add a new phone. Do not specify ID and ID_Type (will be assigned to CRM itself)
