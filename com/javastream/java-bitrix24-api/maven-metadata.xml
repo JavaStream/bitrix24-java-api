@@ -4,8 +4,8 @@
   <artifactId>java-bitrix24-api</artifactId>
   <versioning>
     <versions>
-      <version>0.3-SNAPSHOT</version>
+      <version>0.4-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20200107192525</lastUpdated>
+    <lastUpdated>20200108153246</lastUpdated>
   </versioning>
 </metadata>

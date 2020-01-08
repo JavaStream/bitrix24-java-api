@@ -2,23 +2,23 @@
 <metadata modelVersion="1.1.0">
   <groupId>com.javastream</groupId>
   <artifactId>java-bitrix24-api</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.4-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20200107.192525</timestamp>
+      <timestamp>20200108.153246</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20200107192525</lastUpdated>
+    <lastUpdated>20200108153246</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>0.3-20200107.192525-1</value>
-        <updated>20200107192525</updated>
+        <value>0.4-20200108.153246-1</value>
+        <updated>20200108153246</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>0.3-20200107.192525-1</value>
-        <updated>20200107192525</updated>
+        <value>0.4-20200108.153246-1</value>
+        <updated>20200108153246</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
