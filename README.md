@@ -3,11 +3,11 @@
 Java Library for easy work with **CRM Bitrix24.ru** 
 
 Now you can work with:
-### - Client Card### 
-### - Lead###
-### - Company### 
-### - Product###
-### - Product Section### 
+### - Client Card  
+### - Lead 
+### - Company 
+### - Product 
+### - Product Section 
 Other features coming soon!
 
 ### Connection and functionalities:
@@ -227,4 +227,17 @@ productSection.setSECTION_ID(12);  // ID of Main category
 ProductSection productSection = client.getProductSectionService().getProductSection(16);
 client.getProductSectionService().deleteProductSection(2);
 client.getProductSectionService().updateProductSection(productSection);
+```
+
+**Product**
+```java
+// Create
+Product product = new Product();
+product.setNAME("MainRouter");
+client.getProductService().addProduct(product);
+
+// Get, Delete and Update 
+Product product = client.getProductService().getProduc(4);
+client.getProductService().deleteProduct(6);
+client.getProductService().updateProduct(product);
 ```
