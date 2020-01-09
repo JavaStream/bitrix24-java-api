@@ -3,7 +3,7 @@
 Java Library for easy work with **CRM Bitrix24.ru** 
 
 Now you can work with:
-### - <a name="Contact">Contact</a>  
+### - Contact  
 ### - Lead 
 ### - Company 
 ### - Product 
@@ -43,7 +43,7 @@ You need insert yours Token and bitrix-account. It's easy!
 Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
-[**Contacts**] (#Contact)
+[**Contact**] 
 
 1.1. **Create New Contact**
 
