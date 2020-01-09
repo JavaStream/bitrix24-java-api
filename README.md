@@ -94,8 +94,6 @@ client.getContactService().updateContact(contact);
 
 ***Lead***
 
-1.1. **Create New Lead**
-
 ```java
 // 1.1. Create a new Lead	
 Lead lead = new Lead();
@@ -138,7 +136,7 @@ lead.setWEB(websitList);
 client.getLeadService().updateLead(lead);	
 ```
 
-**Company**
+***Company***
 
 The way of working with the Company is the same as with other entities.
 
@@ -181,20 +179,7 @@ company.setEMAIL(listEmail);
 client.getCempanyService().updateCompany(company);
 ```
 
-**Product Section**
-```java
-// Create
-ProductSection productSection = new ProductSection();
-productSection.add_name("Auto");
-productSection.setSECTION_ID(12);  // ID of Main category
-
-// Get, Delete and Update 
-ProductSection productSection = client.getProductSectionService().getProductSection(16);
-client.getProductSectionService().deleteProductSection(2);
-client.getProductSectionService().updateProductSection(productSection);
-```
-
-**Product**
+***Product***
 ```java
 // Create
 Product product = new Product();
@@ -205,4 +190,17 @@ client.getProductService().addProduct(product);
 Product product = client.getProductService().getProduc(4);
 client.getProductService().deleteProduct(6);
 client.getProductService().updateProduct(product);
+```
+
+***Product Section***
+```java
+// Create
+ProductSection productSection = new ProductSection();
+productSection.add_name("Auto");
+productSection.setSECTION_ID(12);  // ID of Main category
+
+// Get, Delete and Update 
+ProductSection productSection = client.getProductSectionService().getProductSection(16);
+client.getProductSectionService().deleteProductSection(2);
+client.getProductSectionService().updateProductSection(productSection);
 ```
