@@ -43,9 +43,9 @@ You need insert yours Token and bitrix-account. It's easy!
 Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
-[**Contact**] 
+== Contact  
 
-1.1. **Create New Contact**
+=== Create Contact
 
 ```java
 // Create a new Contact card and fill in its fields
@@ -66,21 +66,21 @@ contact.add_company(2);
 client.getContactService().addNewContact(contact);
 ```
 
-1.2. **Get Contact By Id**
+=== 1.2. Get Contact By Id**
 
 ```java
 // We get the contact card by contact ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
 ```
 
-1.3. **Delete Contact By Id**
+=== 1.3. Delete Contact
 
 ```java
 client.getContactService().deleteContactById(72);
 ```
 
 
-1.4. **Update Contact**
+=== 1.4. Update Contact
 
 ```java
 // We get the contact card by contact ID (For example, 74)
