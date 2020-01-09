@@ -43,17 +43,14 @@ You need insert yours Token and bitrix-account. It's easy!
 Client client = new Client("token", "your-account.bitrix24.ru");
 ```
 
-**Contact**  
-
-***Create Contact***
+***Contact***  
 
 ```java
-// Create a new Contact card and fill in its fields
+// Create a new Contact
 Contact contact = new Contact();
 
 // Name and lastName are mandatory fields. Without these parameters, the card cannot be saved.
 contact.add_name_and_lastName("Robert", "Kane");
-
 contact.setLAST_NAME("Edward");
 contact.setTYPE_ID(Type_id.CLIENT.getCode());
 contact.add_comments("He is the best");
@@ -64,29 +61,14 @@ contact.add_company(2);
 
 // At the end Save the created contact in CRM
 client.getContactService().addNewContact(contact);
-```
 
-=== 1.2. Get Contact By Id**
-
-```java
-// We get the contact card by contact ID (For example, 74)
+// 1.2. Get the Contact by ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
-```
 
-=== 1.3. Delete Contact
-
-```java
+// 1.3. Delete Contact
 client.getContactService().deleteContactById(72);
-```
 
-
-=== 1.4. Update Contact
-
-```java
-// We get the contact card by contact ID (For example, 74)
-Contact contact = client.getContactService().getContactById(74);
-
-// Simple fields like String can just set new data
+// Update Contact
 contact.setCOMPANY_ID("2");
 contact.setNAME("John");
 
@@ -99,7 +81,6 @@ listPhone.add(phone);
 contact.setPHONE(listPhone);
 client.getContactService().updateContact(contact);
 
-
 // 2. Change an existing phone (Get the Phone object, set new values for Value and (or) Value_type). 
 // For example, I change the first phone
 Phone phone = contact.getPHONE().get(0);
@@ -111,7 +92,7 @@ client.getContactService().updateContact(contact);
 ```
 
 
-**Lead**
+***Lead***
 
 1.1. **Create New Lead**
 
