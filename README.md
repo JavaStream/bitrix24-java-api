@@ -97,30 +97,18 @@ client.getContactService().updateContact(contact);
 1.1. **Create New Lead**
 
 ```java
- Lead lead = new Lead();
- lead.add_title("Torrentino");
-
-// Save new Lead
+// 1.1. Create a new Lead	
+Lead lead = new Lead();
+lead.add_title("Torrentino");
 client.getLeadService().addNewLead(lead);
-```
 
-1.2. **Get Lead by ID**
-```java
-// Get lead by ID = 4
+// 1.2. Get lead by ID = 4
 Lead lead = client.getLeadService().getLeadById(4);
-```
 
-1.3. **Delete Lead by ID**
-```java
-// Delete lead by ID = 4
+// 1.3. Delete lead 
 client.getLeadService().deleteLeadById(4);
-```
 
-1.4. **Update Lead**
-```java
-// Get lead by ID = 4
-Lead lead = client.getLeadService().getLeadById(4);
-
+// 1.4. Update lead 
 // Simple fields (like String) can just set new data
 lead.setNAME("Albert");
 lead.setLAST_NAME("Shtein");
@@ -139,7 +127,6 @@ listEmail.add(email);
 lead.setEMAIL(listEmail);
 client.getLeadService().updateLead(lead);
 
-
 // 2. Change an existing Website (Get the Website object, set new values for Value and (or) Value_type). 
 // For example, I change the first website
 Website website = lead.getWEB().get(0);
@@ -156,21 +143,19 @@ client.getLeadService().updateLead(lead);
 The way of working with the Company is the same as with other entities.
 
 ```java
-//1. Create New Company and set fields you need
+//1. Create New Company
 Company company = new Company();
 company.add_companyTitle("LLT Prizma");
 company.add_companyType(Company_type.PARTNER);
 company.add_employeesType(Employees_type.FROM_250_TO_500);
 company.add_industryType(Industry_type.BANKING);
 
-//2. Get company by ID = 2
+//2. Get company by ID
 Company company = client.getCempanyService().getCompanyById(2);
 
-//3. Delete company by ID = 3
+//3. Delete company by ID 
 client.getCempanyService().deleteCompanyById(3);
 
-//4. Update company
-Company company = client.getCempanyService().getCompanyById(2);
 //4.1. Update simple fields
 company.setBANKING_DETAILS("r/s 40702810865698252");
 company.setCOMPANY_TYPE(Company_type.SUPPLIER.getCode());
@@ -186,8 +171,7 @@ websitList.add(website);
 company.setWEB(websitList);
 client.getCempanyService().updateCompany(company);
 
-
-//5. Add multiple fields (for example, Email)
+//5. Add new multiple fields (for example, Email)
 Company company = client.getCempanyService().getCompanyById(2);
 List<Email> listEmail = new ArrayList<>();
 Email email = Email.builder()
