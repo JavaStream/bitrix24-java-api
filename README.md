@@ -3,11 +3,11 @@
 Java Library for easy work with **CRM Bitrix24.ru** 
 
 Now you can work with:
-** - Client Card** 
-** - Lead** 
-** - Company** 
-** - Product** 
-** - Product Section**. 
+### - Client Card### 
+### - Lead###
+### - Company### 
+### - Product###
+### - Product Section### 
 Other features coming soon!
 
 ### Connection and functionalities:
