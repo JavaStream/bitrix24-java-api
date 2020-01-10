@@ -18,8 +18,7 @@ Other features coming soon!
 
 ### Connection and functionalities:
 I. **Create account and webhook token**
-![Screenshot](1_screen.jpg)
-![Screenshot](2_screen.jpg)
+![Screenshot](screen_1.gif)
 
 II. **Add Maven dependency** 
 ```xml
