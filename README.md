@@ -205,6 +205,7 @@ client.getProductSectionService().updateProductSection(productSection);
 ```
 
 **Chats with a Leads**
+
 Soon we will add functionality for working with dialogs and messages.
 
 ```java
