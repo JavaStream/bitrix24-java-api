@@ -6,10 +6,11 @@ Now you can work with Contact, Lead, Company, Product, Product Section, Chat wit
 
 QUICK START
 ------------
-I. Create account and webhook token
+1. Create account and webhook token
+
 ![Screenshot](screen_1.gif)
 
-II. Add Maven dependency 
+2. Add Maven dependency:
 ```xml
 <repositories>
    <repository>
@@ -29,7 +30,7 @@ II. Add Maven dependency
  </dependency>
   ```
 
-III. Init Client in your project.
+3. Init Client in your project.
 You need insert yours Token and bitrix-account. It's easy!
 
 ```java
