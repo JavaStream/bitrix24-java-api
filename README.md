@@ -6,7 +6,7 @@ Now you can work with Contact, Lead, Company, Product, Product Section, Chat wit
 
 QUICK START
 ------------
-1. Create account and webhook token
+1. Create an account and webhook token
 
 ![Screenshot](screen_1.gif)
 
@@ -205,6 +205,7 @@ client.getProductSectionService().updateProductSection(productSection);
 ```
 
 **Chats with a Leads**
+Soon we will add functionality for working with dialogs and messages.
 
 ```java
 
