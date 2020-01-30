@@ -90,7 +90,7 @@ client.getContactService().updateContact(contact);
 ```
 
 
-***Lead***
+**Lead**
 
 ```java
 // 1.1. Create a new Lead	
@@ -134,7 +134,7 @@ lead.setWEB(websitList);
 client.getLeadService().updateLead(lead);	
 ```
 
-***Company***
+**Company**
 
 The way of working with the Company is the same as with other entities.
 
@@ -177,7 +177,7 @@ company.setEMAIL(listEmail);
 client.getCempanyService().updateCompany(company);
 ```
 
-***Product***
+**Product**
 ```java
 // Create
 Product product = new Product();
@@ -190,7 +190,7 @@ client.getProductService().deleteProduct(6);
 client.getProductService().updateProduct(product);
 ```
 
-***Product Section***
+**Product Section**
 ```java
 // Create
 ProductSection productSection = new ProductSection();
@@ -203,7 +203,7 @@ client.getProductSectionService().deleteProductSection(2);
 client.getProductSectionService().updateProductSection(productSection);
 ```
 
-***Chats with a Leads***
+**Chats with a Leads**
 
 ```java
 
