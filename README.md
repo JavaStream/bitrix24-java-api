@@ -2,19 +2,14 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work with:
+Now you can work with Contact, Lead, Company, Product, Product Section, Chat with a Lead. Other features coming soon!
 
-***- Contact, Lead, Company, Product, Product Section*** 
-
-***- Chat with a Lead*** 
-
-Other features coming soon!
-
-### Connection and functionalities:
-I. **Create account and webhook token**
+QUICK START
+------------
+I. Create account and webhook token
 ![Screenshot](screen_1.gif)
 
-II. **Add Maven dependency** 
+II. Add Maven dependency 
 ```xml
 <repositories>
    <repository>
@@ -34,7 +29,7 @@ II. **Add Maven dependency**
  </dependency>
   ```
 
-III. **Init Client in your project.**
+III. Init Client in your project.
 You need insert yours Token and bitrix-account. It's easy!
 
 ```java
