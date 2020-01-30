@@ -4,15 +4,9 @@ Java Library for easy work with **CRM Bitrix24.ru**
 
 Now you can work with:
 
-***- Contact***  
+***- Contact, Lead, Company, Product, Product Section*** 
 
-***- Lead*** 
-
-***- Company*** 
-
-***- Product*** 
-
-***- Product Section*** 
+***- Chat with a Lead*** 
 
 Other features coming soon!
 
@@ -209,3 +203,25 @@ ProductSection productSection = client.getProductSectionService().getProductSect
 client.getProductSectionService().deleteProductSection(2);
 client.getProductSectionService().updateProductSection(productSection);
 ```
+
+***Chats with a Leads***
+
+```java
+
+Lead lead = client.getLeadService().getLeadById(42);                                      // Get a Lead (for example, id = 42)
+Chat chat = client.getChatService().getChat(lead);                                        // Get the chat whith this Lead
+List<User> userList = client.getChatService().getUsers(chat);                             // Get the list of users in this chat 
+List<User> userList = client.getChatService().getListBusinessUsers();                     // Get a list of all business users
+client.getChatService().muteNotifications(chat, ChatNotifications_type.YES.getCode());    // Turn off chat notifications 
+
+// Adding a new chat for Lead = 42. The field MESSAGE cannot be empty!
+Chat chatNew = new Chat();
+chatNew.setCOLOR(ChatColors_type.AZURE.getCode());
+chatNew.setDESCRIPTION("Conversation with a client #42");
+chatNew.setMESSAGE("Hello customer #42!");
+chatNew.setTITLE("Customer " + lead.getTITLE());
+
+client.getChatService().createChat(chatNew, lead, userList);
+
+```
+
