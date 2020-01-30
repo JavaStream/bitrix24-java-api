@@ -30,7 +30,7 @@ II. **Add Maven dependency**
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
  </dependency>
   ```
 
