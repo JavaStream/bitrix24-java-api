@@ -2,26 +2,15 @@
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work with:
+Now you can work with Contact, Lead, Company, Product, Product Section, Chat with a Lead. Other features coming soon!
 
-***- Contact***  
+QUICK START
+------------
+1. Create an account and webhook token
 
-***- Lead*** 
+![Screenshot](screen_1.gif)
 
-***- Company*** 
-
-***- Product*** 
-
-***- Product Section*** 
-
-Other features coming soon!
-
-### Connection and functionalities:
-I. **Create account and webhook token**
-![Screenshot](1_screen.jpg)
-![Screenshot](2_screen.jpg)
-
-II. **Add Maven dependency** 
+2. Add Maven dependency:
 ```xml
 <repositories>
    <repository>
@@ -37,19 +26,23 @@ II. **Add Maven dependency**
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.8-SNAPSHOT</version>
  </dependency>
   ```
 
-III. **Init Client in your project.**
-You need insert yours Token and bitrix-account. It's easy!
+3. Init Client in your project.
+You need insert yours Token, bitrix-account and rest_id. It's easy!
 
 ```java
 // Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
+Client client = new Client("token", "your-account.bitrix24.ru", rest_id);
 ```
 
-***Contact***  
+
+EXAMPLES
+-----------
+
+**Contact**  
 
 ```java
 // Create a new Contact
@@ -98,7 +91,7 @@ client.getContactService().updateContact(contact);
 ```
 
 
-***Lead***
+**Lead**
 
 ```java
 // 1.1. Create a new Lead	
@@ -142,7 +135,7 @@ lead.setWEB(websitList);
 client.getLeadService().updateLead(lead);	
 ```
 
-***Company***
+**Company**
 
 The way of working with the Company is the same as with other entities.
 
@@ -185,7 +178,7 @@ company.setEMAIL(listEmail);
 client.getCempanyService().updateCompany(company);
 ```
 
-***Product***
+**Product**
 ```java
 // Create
 Product product = new Product();
@@ -198,7 +191,7 @@ client.getProductService().deleteProduct(6);
 client.getProductService().updateProduct(product);
 ```
 
-***Product Section***
+**Product Section**
 ```java
 // Create
 ProductSection productSection = new ProductSection();
@@ -210,3 +203,27 @@ ProductSection productSection = client.getProductSectionService().getProductSect
 client.getProductSectionService().deleteProductSection(2);
 client.getProductSectionService().updateProductSection(productSection);
 ```
+
+**Chats with a Leads**
+
+Soon we will add functionality for working with dialogs and messages.
+
+```java
+
+Lead lead = client.getLeadService().getLeadById(42);                                      // Get a Lead (for example, id = 42)
+Chat chat = client.getChatService().getChat(lead);                                        // Get the chat whith this Lead
+List<User> userList = client.getChatService().getUsers(chat);                             // Get the list of users in this chat 
+List<User> userList = client.getChatService().getListBusinessUsers();                     // Get a list of all business users
+client.getChatService().muteNotifications(chat, ChatNotifications_type.YES.getCode());    // Turn off chat notifications 
+
+// Adding a new chat for Lead = 42. The field MESSAGE cannot be empty!
+Chat chatNew = new Chat();
+chatNew.setCOLOR(ChatColors_type.AZURE.getCode());
+chatNew.setDESCRIPTION("Conversation with a client #42");
+chatNew.setMESSAGE("Hello customer #42!");
+chatNew.setTITLE("Customer " + lead.getTITLE());
+
+client.getChatService().createChat(chatNew, lead, userList);
+
+```
+
