@@ -26,16 +26,16 @@ QUICK START
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>0.7-SNAPSHOT</version>
+    <version>0.8-SNAPSHOT</version>
  </dependency>
   ```
 
 3. Init Client in your project.
-You need insert yours Token and bitrix-account. It's easy!
+You need insert yours Token, bitrix-account and rest_id. It's easy!
 
 ```java
 // Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
+Client client = new Client("token", "your-account.bitrix24.ru", rest_id);
 ```
 
 
