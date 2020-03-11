@@ -3,7 +3,7 @@
 Java Library for easy work with **CRM Bitrix24.ru** 
 
 Now you can work with Contact, Lead, Company, Product, Product Section, Chat with a Lead. Other features coming soon!
-
+If you have any questions send me an email: javastream.msn@gmail.com
 QUICK START
 ------------
 1. Create an account and webhook token
