@@ -1,15 +1,18 @@
-# Bitrix24 Java API  [![HitCount](http://hits.dwyl.io/JavaStream/bitrix24-java-api.svg)](http://hits.dwyl.io/JavaStream/bitrix24-java-api)
+# Bitrix24 Java API 
 
 Java Library for easy work with **CRM Bitrix24.ru** 
 
-Now you can work only with the **Client Card**. Other features coming soon!
+Now you can work with Contact, Lead, Company, Product, Product Section, Chat with a Lead. Other features coming soon!
 
-### Connection and functionalities:
-1. **Create account and webhook token**
-![Screenshot](1_screen.jpg)
-![Screenshot](2_screen.jpg)
+If you have any questions send me an email: javastream.msn@gmail.com
 
-2. **Add Maven dependency** 
+QUICK START
+------------
+1. Create an account and webhook token
+
+![Screenshot](screen_1.gif)
+
+2. Add Maven dependency:
 ```xml
 <repositories>
    <repository>
@@ -25,117 +28,50 @@ Now you can work only with the **Client Card**. Other features coming soon!
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
  </dependency>
   ```
 
-3. **Init Client in your project.**
-You need insert yours Token and bitrix-account. It's easy!
+3. Init Client in your project.
+You need insert yours Token, bitrix-account and rest_id. It's easy!
 
 ```java
 // Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
+Client client = new Client("token", "your-account.bitrix24.ru", rest_id);
 ```
 
-4. **Create New Contact**
+
+EXAMPLES
+-----------
+
+**Contact**  
 
 ```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
-// Create a new Contact card and fill in its fields
+// Create a new Contact
 Contact contact = new Contact();
 
-// Mandatory method. Without the name and lastName parameters, the card cannot be saved.
+// Name and lastName are mandatory fields. Without these parameters, the card cannot be saved.
 contact.add_name_and_lastName("Robert", "Kane");
-
 contact.setLAST_NAME("Edward");
-
-// Contact type -> in Type_id you can select 1 of 4 options
 contact.setTYPE_ID(Type_id.CLIENT.getCode());
-
-// Comment field
 contact.add_comments("He is the best");
-
-// Post field
 contact.add_post("Manager");
 
 // Attach a company card (requires company ID)
 contact.add_company(2);
 
-// Adding a phone. Phone type is set in Phone_type
-contact.add_phone("89119500085", Phone_type.MOBILE);
-contact.add_phone("500-00-90", Phone_type.WORK);
-contact.add_phone("500-00-92", Phone_type.FAX);
-
-// Adding email. Phone type is set in Email_type
-contact.add_email("robert@gmail.com", Email_type.PRIVATE);
-contact.add_email("robert.dia@digital.com", Email_type.WORK);
-
-// Adding a site. Phone type is set in Website_type
-contact.add_website("www.digital.com", Website_type.WORK);
-contact.add_website("www.facebook.com/robert", Website_type.FACEBOOK);
-
-// Adding instant messengers. Messengers type is set in Messengers_type
-contact.add_messenger("roby-tgr", Messengers_type.TELEGRAM);
-contact.add_messenger("roby-van", Messengers_type.VIBER);
-
 // At the end Save the created contact in CRM
 client.getContactService().addNewContact(contact);
-```
 
-5. **Get Contact By Id**
-
-```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
-// We get the contact card by contact ID (For example, 74)
+// 1.2. Get the Contact by ID (For example, 74)
 Contact contact = client.getContactService().getContactById(74);
 
-```
-
-
-6. **Delete Contact By Id**
-
-```java
-Client client = new Client("token", "your-account.bitrix24.ru");
-
+// 1.3. Delete Contact
 client.getContactService().deleteContactById(72);
-```
 
-7. **Add or Remove Company Into Existing Contact By Id**
-
-```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
-// We get the contact card by contact ID (For example, 74)
-Contact contact = client.getContactService().getContactById(74);
-
-// The first way is to set the COMPANY_ID field. Here is the ID of a company already created in CRM
+// Update Contact
 contact.setCOMPANY_ID("2");
-
-// Second way
-contact.add_company(2);
-
-// Remove this company from this contact card (first parameter - ContactID, second param - CompanyID)
-client.getContactService().deleteCompanyFromExistingContactById(74, 2);
-```
-
-
-8. **Update Contact**
-
-```java
-// Init Client
-Client client = new Client("token", "your-account.bitrix24.ru");
-
-// We get the contact card by contact ID (For example, 74)
-Contact contact = client.getContactService().getContactById(74);
-
-// Simple fields like String can just set new data
-contact.setCOMPANY_ID("2");
-contact.setNAME("Джон");
+contact.setNAME("John");
 
 // In multiple fields containing lists, the data is entered differently (for example, Phone)
 // 1. Add a new phone. Do not specify ID and ID_Type (will be assigned to CRM itself)
@@ -146,7 +82,6 @@ listPhone.add(phone);
 contact.setPHONE(listPhone);
 client.getContactService().updateContact(contact);
 
-
 // 2. Change an existing phone (Get the Phone object, set new values for Value and (or) Value_type). 
 // For example, I change the first phone
 Phone phone = contact.getPHONE().get(0);
@@ -156,3 +91,141 @@ phoneList.add(phone);
 contact.setPHONE(phoneList);
 client.getContactService().updateContact(contact);
 ```
+
+
+**Lead**
+
+```java
+// 1.1. Create a new Lead	
+Lead lead = new Lead();
+lead.add_title("Torrentino");
+client.getLeadService().addNewLead(lead);
+
+// 1.2. Get lead by ID = 4
+Lead lead = client.getLeadService().getLeadById(4);
+
+// 1.3. Delete lead 
+client.getLeadService().deleteLeadById(4);
+
+// 1.4. Update lead 
+// Simple fields (like String) can just set new data
+lead.setNAME("Albert");
+lead.setLAST_NAME("Shtein");
+lead.setADDRESS("West Olympic Boulevard Apt. 100");
+lead.setCOMMENTS("Interested in price");
+lead.setSTATUS_ID(StatusID_type.NEW.getCode());
+lead.setCURRENCY_ID(CurrencyID_type.EUR.getCode());
+lead.setSOURCE_ID(SourceID_type.RECOMMENDATION.getCode());
+	
+// In multiple fields containing lists, the data is entered differently (for example, Phone, Email, Website, IM)
+// 1. Add a new Email. Do not specify ID and ID_Type (will be assigned to CRM itself)
+Email email = Email.builder()
+	.VALUE("albert@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
+List<Email> listEmail = new ArrayList<>();
+listEmail.add(email);
+lead.setEMAIL(listEmail);
+client.getLeadService().updateLead(lead);
+
+// 2. Change an existing Website (Get the Website object, set new values for Value and (or) Value_type). 
+// For example, I change the first website
+Website website = lead.getWEB().get(0);
+website.setVALUE("www.albert-best.org");
+website.setVALUE_TYPE(Website_type.OTHER.getCode());
+List<Website> websitList = new ArrayList<>();
+websitList.add(website);
+lead.setWEB(websitList);
+client.getLeadService().updateLead(lead);	
+```
+
+**Company**
+
+The way of working with the Company is the same as with other entities.
+
+```java
+//1. Create New Company
+Company company = new Company();
+company.add_companyTitle("LLT Prizma");
+company.add_companyType(Company_type.PARTNER);
+company.add_employeesType(Employees_type.FROM_250_TO_500);
+company.add_industryType(Industry_type.BANKING);
+
+//2. Get company by ID
+Company company = client.getCempanyService().getCompanyById(2);
+
+//3. Delete company by ID 
+client.getCempanyService().deleteCompanyById(3);
+
+//4.1. Update simple fields
+company.setBANKING_DETAILS("r/s 40702810865698252");
+company.setCOMPANY_TYPE(Company_type.SUPPLIER.getCode());
+company.setADDRESS("Olympic Boulevard Apt. 120");
+company.setCOMMENTS("Interested in price");
+
+//4.2. Update multiple fields Website
+Website website = company.getWEB().get(0);
+website.setVALUE("www.albert12.org");
+website.setVALUE_TYPE(Website_type.OTHER.getCode());
+List<Website> websitList = new ArrayList<>();
+websitList.add(website);
+company.setWEB(websitList);
+client.getCempanyService().updateCompany(company);
+
+//5. Add new multiple fields (for example, Email)
+Company company = client.getCempanyService().getCompanyById(2);
+List<Email> listEmail = new ArrayList<>();
+Email email = Email.builder()
+	.VALUE("srtur12@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
+listEmail.add(email);
+company.setEMAIL(listEmail);
+client.getCempanyService().updateCompany(company);
+```
+
+**Product**
+```java
+// Create
+Product product = new Product();
+product.setNAME("MainRouter");
+client.getProductService().addProduct(product);
+
+// Get, Delete and Update 
+Product product = client.getProductService().getProduc(4);
+client.getProductService().deleteProduct(6);
+client.getProductService().updateProduct(product);
+```
+
+**Product Section**
+```java
+// Create
+ProductSection productSection = new ProductSection();
+productSection.add_name("Auto");
+productSection.setSECTION_ID(12);  // ID of Main category
+
+// Get, Delete and Update 
+ProductSection productSection = client.getProductSectionService().getProductSection(16);
+client.getProductSectionService().deleteProductSection(2);
+client.getProductSectionService().updateProductSection(productSection);
+```
+
+**Chats with a Leads**
+
+Soon we will add functionality for working with dialogs and messages.
+
+```java
+
+Lead lead = client.getLeadService().getLeadById(42);                                      // Get a Lead (for example, id = 42)
+Chat chat = client.getChatService().getChat(lead);                                        // Get the chat whith this Lead
+List<User> userList = client.getChatService().getUsers(chat);                             // Get the list of users in this chat 
+List<User> userList = client.getChatService().getListBusinessUsers();                     // Get a list of all business users
+client.getChatService().muteNotifications(chat, ChatNotifications_type.YES.getCode());    // Turn off chat notifications 
+
+// Adding a new chat for Lead = 42. The field MESSAGE cannot be empty!
+Chat chatNew = new Chat();
+chatNew.setCOLOR(ChatColors_type.AZURE.getCode());
+chatNew.setDESCRIPTION("Conversation with a client #42");
+chatNew.setMESSAGE("Hello customer #42!");
+chatNew.setTITLE("Customer " + lead.getTITLE());
+
+client.getChatService().createChat(chatNew, lead, userList);
+
+```
+
