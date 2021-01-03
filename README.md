@@ -28,7 +28,7 @@ QUICK START
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>2.0</version>
+    <version>1.1-SNAPSHOT</version>
  </dependency>
   ```
 
