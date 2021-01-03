@@ -10,7 +10,7 @@ QUICK START
 ------------
 1. Create an account and webhook token
 
-![Screenshot](screen_1.gif)
+![Screenshot](screen_2.gif)
 
 2. Add Maven dependency:
 ```xml
@@ -28,7 +28,7 @@ QUICK START
 <dependency>
     <groupId>com.javastream</groupId>
     <artifactId>java-bitrix24-api</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>2.0</version>
  </dependency>
   ```
 
