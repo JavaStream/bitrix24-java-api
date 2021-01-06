@@ -1,43 +1,85 @@
 # Bitrix24 Java API 
 
-Java Library for easy work with **CRM Bitrix24.ru** 
+---
 
-Now you can work with Contact, Lead, Company, Product, Product Section, Chat with a Lead. Other features coming soon!
+<p align="center">
+<sup>
+<b> This Java project is designed to be simple and efficient. Now you can work with **CRM Bitrix24.ru** using our API, that provide good functionality. 
+Essentially, API provided work with Contact, Lead, Company, Product, Product Section and Chat. If you have any questions send me an email: javastream.msn@gmail.com  </b> 
+</sup>
+</p>
 
-If you have any questions send me an email: javastream.msn@gmail.com
+---
+
+
+[![Latest Version](https://img.shields.io/github/release/JavaStream/bitrix24-java-api.svg?style=flat-square)](https://github.com/releases)
+[![GitHub contributors][contributors-image]][contributors-url]
+[![HitCount](http://hits.dwyl.io/JavaStream/bitrix24-java-api.svg)](http://hits.dwyl.io/JavaStream/bitrix24-java-api)
+[![Total Downloads](https://img.shields.io/github/downloads/JavaStream/bitrix24-java-api/total.svg)](https://github.com/JavaStream/bitrix24-java-api/releases)
+
+
+[contributors-url]: https://github.com/JavaStream/bitrix24-java-api/graphs/contributors
+[contributors-image]: https://img.shields.io/github/contributors/JavaStream/bitrix24-java-api.svg
+
+
 
 QUICK START
 ------------
-1. Create an account and webhook token
+
+>Step 1. Add dependency:
+
+**For Maven project:**
+
+``` XML
+<repositories>
+	<repository>
+	   <id>jitpack.io</id>
+	   <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+``` XML
+<dependency>
+    <groupId>com.github.JavaStream</groupId>
+    <artifactId>bitrix24-java-api</artifactId>
+    <version>1.3</version>
+</dependency>
+```
+
+
+**For Gradle project:**
+
+``` XML
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+
+``` XML
+dependencies {
+    implementation 'com.github.JavaStream:bitrix24-java-api:1.3'
+}
+```
+
+
+
+>Step 2. Create an account and webhook token
 
 ![Screenshot](screen_2.gif)
 
-2. Add Maven dependency:
-```xml
-<repositories>
-   <repository>
-      <id>bitrix24-java-api-mvn-repo</id>
-	  <url>https://raw.github.com/JavaStream/bitrix24-java-api/mvn-repo/</url>
-		 <snapshots>
-		     <enabled>true</enabled>
-			  <updatePolicy>always</updatePolicy>
-		 </snapshots>
-   </repository>
-</repositories>
 
-<dependency>
-    <groupId>com.javastream</groupId>
-    <artifactId>java-bitrix24-api</artifactId>
-    <version>1.1-SNAPSHOT</version>
- </dependency>
-  ```
-
-3. Init Client in your project.
+>Step 3. Init Client in your project.
 You need insert yours Token, bitrix-account and rest_id. It's easy!
 
-```java
+```Java
 // Init Client
 Client client = new Client("token", "your-account.bitrix24.ru", rest_id);
+
 ```
 
 

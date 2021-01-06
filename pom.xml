@@ -69,11 +69,11 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- httpcomponents -->
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient-osgi</artifactId>
-			<version>4.5.1</version>
+			<!-- httpcomponents 	<version>4.5.1</version>  -->
 		</dependency>
 
 		<!-- apache.commons -->
