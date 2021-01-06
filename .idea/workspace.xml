@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a5b113fc-0f1e-4ade-8d50-ae7ac30c0a3f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitrix24-java-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bitrix24-java-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/javastream/examples/lead/GetLeadById.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/javastream/examples/lead/GetLeadById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen_2.gif" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -265,7 +262,7 @@
       <workItem from="1609661691337" duration="31897000" />
       <workItem from="1609741687345" duration="3293000" />
       <workItem from="1609745165342" duration="9080000" />
-      <workItem from="1609942894121" duration="4345000" />
+      <workItem from="1609942894121" duration="5734000" />
     </task>
     <servers />
   </component>
