@@ -10,7 +10,7 @@ QUICK START
 ------------
 1. Create an account and webhook token
 
-![Screenshot](screen_1.gif)
+![Screenshot](screen_2.gif)
 
 2. Add Maven dependency:
 ```xml
