@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/retailcrm.iml" filepath="$PROJECT_DIR$/retailcrm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitrix24-java-api.iml" filepath="$PROJECT_DIR$/bitrix24-java-api.iml" />
     </modules>
   </component>
 </project>
