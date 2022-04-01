@@ -1,87 +1,140 @@
 package com.javastream.entity;
 
+import com.google.gson.annotations.SerializedName;
 import com.javastream.entity.model.Email;
 import com.javastream.entity.model.Messenger;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.model.Website;
-import com.javastream.entity.types.Type_id_contact;
 import lombok.Data;
 import lombok.ToString;
+
 import java.util.Date;
 import java.util.List;
 
-/*  Created by JavaStream   */
-
+/**
+ * Contact.
+ *
+ * UPD: name and lastName are mandatory fields for creation a new Contract
+ *
+ * @author javastream
+ */
 @Data
 @ToString
 public class Contact {
-    private Integer ID;
-    private String NAME;
-    private String LAST_NAME;
-    private String SECOND_NAME;
-    private String ADDRESS_PROVINCE;
-    private String ADDRESS_COUNTRY_CODE;
-    private String ADDRESS_REGION;
-    private String ADDRESS_COUNTRY;
-    private String ADDRESS_CITY;
-    private String ADDRESS;
-    private String POST;
-    private String ORIGIN_VERSION;
-    private String ASSIGNED_BY_ID;
-    private String EXPORT;
-    private String UTM_SOURCE;
-    private String COMMENTS;
-    //private Date BIRTHDATE;
-    private String FACE_ID;
-    private String UF_CRM_1577981905016;
-    private String LEAD_ID;
-    private String UTM_MEDIUM;
-    private String HONORIFIC;
-    private String UTM_CONTENT;
-    private String UF_CRM_1577987768796;
-    private String COMPANY_ID;
-    private Date DATE_CREATE;
-    private Date DATE_MODIFY;
-    private String SOURCE_ID;
-    private String ORIGIN_ID;
-    private String ORIGINATOR_ID;
-    private String HAS_EMAIL;
-    private String UTM_TERM;
-    private String HAS_IMOL;
-    private String HAS_PHONE;
-    private String UTM_CAMPAIGN;
-    private String TYPE_ID;
-    private List<Email> EMAIL;
-    private List<Phone> PHONE;
-    private List<Messenger> IM;
-    private List<Website> WEB;
 
-    public void add_name_and_lastName(String name, String lastName) {
-        this.NAME=name;
-        this.LAST_NAME=lastName;
+    public Contact(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
     }
 
-    public void add_secondName(String secondName) {
-        this.SECOND_NAME = secondName;
-    }
+    @SerializedName("ID")
+    private Integer id;
 
-    public void add_post(String post) {
-        this.POST = post;
-    }
+    @SerializedName("NAME")
+    private String name;
 
-    public void add_comments(String comments) {
-        this.COMMENTS = comments;
-    }
+    @SerializedName("LAST_NAME")
+    private String lastName;
 
-    public void add_company(Integer companyId) {
-        this.COMPANY_ID = companyId.toString();
-    }
+    @SerializedName("SECOND_NAME")
+    private String secondName;
 
-    public void add_type_id(String type_id) {
-        this.TYPE_ID = type_id;
-    }
+    @SerializedName("ADDRESS_PROVINCE")
+    private String addressProvince;
 
-    public void add_type_id(Type_id_contact type_idContact) {
-        this.TYPE_ID = type_idContact.getCode();
-    }
+    @SerializedName("ADDRESS_COUNTRY_CODE")
+    private String addressCountryCode;
+
+    @SerializedName("ADDRESS_REGION")
+    private String addressRegion;
+
+    @SerializedName("ADDRESS_COUNTRY")
+    private String addressCountry;
+
+    @SerializedName("ADDRESS_CITY")
+    private String addressCity;
+
+    @SerializedName("ADDRESS")
+    private String address;
+
+    @SerializedName("POST")
+    private String post;
+
+    @SerializedName("ORIGIN_VERSION")
+    private String originVersion;
+
+    @SerializedName("ASSIGNED_BY_ID")
+    private String assignedById;
+
+    @SerializedName("EXPORT")
+    private String export;
+
+    @SerializedName("UTM_SOURCE")
+    private String utmSource;
+
+    @SerializedName("COMMENTS")
+    private String comments;
+
+    @SerializedName("FACE_ID")
+    private String faceId;
+
+    @SerializedName("LEAD_ID")
+    private String leadId;
+
+    @SerializedName("UTM_MEDIUM")
+    private String utmMedium;
+
+    @SerializedName("HONORIFIC")
+    private String honorific;
+
+    @SerializedName("UTM_CONTENT")
+    private String utmContent;
+
+    @SerializedName("COMPANY_ID")
+    private String companyId;
+
+    @SerializedName("DATE_CREATE")
+    private Date dateCreate;
+
+    @SerializedName("DATE_MODIFY")
+    private Date dateModify;
+
+    @SerializedName("SOURCE_ID")
+    private String sourceId;
+
+    @SerializedName("ORIGIN_ID")
+    private String originId;
+
+    @SerializedName("ORIGINATOR_ID")
+    private String originatorId;
+
+    @SerializedName("HAS_EMAIL")
+    private String hasEmail;
+
+    @SerializedName("UTM_TERM")
+    private String utmTerm;
+
+    @SerializedName("HAS_IMOL")
+    private String hasImol;
+
+    @SerializedName("HAS_PHONE")
+    private String hasPhone;
+
+    @SerializedName("UTM_CAMPAIGN")
+    private String utmCampaign;
+
+    @SerializedName("TYPE_ID")
+    private String typeId;
+
+    @SerializedName("EMAIL")
+    private List<Email> emails;
+
+    @SerializedName("PHONE")
+    private List<Phone> phones;
+
+    @SerializedName("IM")
+    private List<Messenger> messengers;
+
+    @SerializedName("WEB")
+    private List<Website> websites;
 }

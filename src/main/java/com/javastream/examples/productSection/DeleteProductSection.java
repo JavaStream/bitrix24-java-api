@@ -11,7 +11,7 @@ public class DeleteProductSection {
          // Инициализация клиента (вебхук токен и аккаунт CRM)
          Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
-        client.getProductSectionService().deleteProductSection(2);
+        client.productSectionService().delete(2);
     }
 
 }

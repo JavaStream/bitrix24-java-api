@@ -12,6 +12,6 @@ public class DeleteLeadById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         // Удаляет Лид по его ID (в примере удаляется лид с id=8)
-        client.getLeadService().deleteLeadById(8);
+        client.leadService().delete(8);
     }
 }

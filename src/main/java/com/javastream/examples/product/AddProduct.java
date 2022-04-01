@@ -13,8 +13,8 @@ public class AddProduct {
          Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         Product product = new Product();
-        product.setNAME("MainRouter");
-        client.getProductService().addProduct(product);
+        product.setName("MainRouter");
+        client.productService().add(product);
     }
 
 }

@@ -12,10 +12,10 @@ public class UpdateProduct {
         // Инициализация клиента (вебхук токен и аккаунт CRM)
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
-        Product product = client.getProductService().getProduct(4);
-        product.setCODE("utr256587");
-        product.setNAME("Super Router");
-        client.getProductService().updateProduct(product);
+        Product product = client.productService().get(4);
+        product.setCode("utr256587");
+        product.setName("Super Router");
+        client.productService().update(product);
     }
 
 }

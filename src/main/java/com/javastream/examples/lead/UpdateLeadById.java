@@ -18,35 +18,35 @@ public class UpdateLeadById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         // Получаем Лид по его ID
-        Lead lead = client.getLeadService().getLeadById(4);
+        Lead lead = client.leadService().get(4);
 
         // Простые поля типа String можно просто засетить новые данные
-        lead.setNAME("Albert");
-        lead.setLAST_NAME("Shtein");
-        lead.setADDRESS("West Olympic Boulevard Apt. 100");
-        lead.setCOMMENTS("Interested in price");
-        lead.setSTATUS_ID(StatusID_type.NEW.getCode());
-        lead.setCURRENCY_ID(CurrencyID_type.EUR.getCode());
-        lead.setSOURCE_ID(SourceID_type.RECOMMENDATION.getCode());
+        lead.setName("Albert");
+        lead.setLastName("Shtein");
+        lead.setAddress("West Olympic Boulevard Apt. 100");
+        lead.setComments("Interested in price");
+        lead.setStatusId(StatusIdType.NEW.getCode());
+        lead.setCurrencyId(CurrencyIdType.EUR.getCode());
+        lead.setSourceId(SourceIdType.RECOMMENDATION.getCode());
 
         //В множественные поля, содержащие в себе списки, вносятся иначе (напримере, телефон, email, мессенджер, Сайт)
         // 1. Добавить новый Email. Не укаызваем ID и ID_Type (будут присвоены самой CRM)
         List<Email> listEmail = new ArrayList<>();
         Email email = Email.builder()
-                .VALUE("albert@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
+                .value("albert@gmail.com").valueType(EmailType.PRIVATE.getCode()).build();
         listEmail.add(email);
-        lead.setEMAIL(listEmail);
-        client.getLeadService().updateLead(lead);
+        lead.setEmails(listEmail);
+        client.leadService().update(lead);
 
 
         // 2. Изменить существующий Сайт (Получаем объект WEB, сетим новые значения Value и(или) Value_type и делаем update)
-        Website website = lead.getWEB().get(0);
-        website.setVALUE("www.albert-best.org");
-        website.setVALUE_TYPE(Website_type.OTHER.getCode());
+        Website website = lead.getWebsites().get(0);
+        website.setValue("www.albert-best.org");
+        website.setValueType(WebsiteType.OTHER.getCode());
         List<Website> websitList = new ArrayList<>();
         websitList.add(website);
-        lead.setWEB(websitList);
-        client.getLeadService().updateLead(lead);
+        lead.setWebsites(websitList);
+        client.leadService().update(lead);
 
     }
 

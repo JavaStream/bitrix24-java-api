@@ -1,8 +1,11 @@
 package com.javastream.entity.types;
 
-
-public enum Industry_type {
-
+/**
+ * IndustryType.
+ *
+ * @author javastream
+ */
+public enum IndustryType {
     IT("IT"),
     TELECOM("TELECOM"),
     MANUFACTURING("MANUFACTURING"),
@@ -17,10 +20,11 @@ public enum Industry_type {
 
     private String code;
 
-    Industry_type(String code){
+    IndustryType(String code) {
         this.code = code;
     }
 
-    public String getCode(){ return code;}
-
+    public String getCode() {
+        return code;
+    }
 }

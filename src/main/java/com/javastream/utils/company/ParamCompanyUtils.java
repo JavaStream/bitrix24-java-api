@@ -2,7 +2,7 @@ package com.javastream.utils.company;
 
 import com.javastream.entity.Company;
 import com.javastream.uriParamsCreator.UriParamsCreator;
-import org.springframework.stereotype.Service;
+import com.javastream.utils.MultiFields;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -10,12 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Service
+/**
+ * ParamCompanyUtils.
+ *
+ * @author javastream
+ */
 public class ParamCompanyUtils {
-
     private final static String ID = "id";
     private final static String SPACE_PARAM = "%20";
-
     private final static String TITLE = "FIELDS[TITLE]";
     private final static String ADDRESS_PROVINCE = "FIELDS[ADDRESS_PROVINCE]";
     private final static String ADDRESS_COUNTRY_CODE = "FIELDS[ADDRESS_COUNTRY_CODE]";
@@ -33,29 +35,28 @@ public class ParamCompanyUtils {
     private final static String LEAD_ID = "FIELDS[LEAD_ID]";
     private final static String BANKING_DETAILS = "FIELDS[BANKING_DETAILS]";
 
-
-    public UriParamsCreator getParamsForAddCompany(Company company) throws UnsupportedEncodingException {
-        UriParamsCreator params = initialFieldsForAddCompany(company);
+    public UriParamsCreator addMethod(Company company) throws UnsupportedEncodingException {
+        UriParamsCreator params = createFieldsForAddMethod(company);
         params.build();
         return params;
     }
 
-    public UriParamsCreator getParamsForGetCompany(Integer idCompany) {
+    public UriParamsCreator getMethod(Integer idCompany) {
         UriParamsCreator params = new UriParamsCreator();
         params.put(ID, idCompany.toString());
         params.build();
         return params;
     }
 
-    public UriParamsCreator getParamsForDeleteCompany(Integer idCompany) {
+    public UriParamsCreator deleteMethod(Integer idCompany) {
         UriParamsCreator params = new UriParamsCreator();
         params.put(ID, idCompany.toString());
         params.build();
         return params;
     }
 
-    public UriParamsCreator getParamsForUpdateCompany(Company company) throws UnsupportedEncodingException {
-        UriParamsCreator params = initialFieldsForUpdateCompany(company);
+    public UriParamsCreator updateMethod(Company company) throws UnsupportedEncodingException {
+        UriParamsCreator params = createFieldsForUpdateMethod(company);
         params.build();
         return params;
     }
@@ -64,62 +65,60 @@ public class ParamCompanyUtils {
         if (field == null) {
             return SPACE_PARAM;
         } else {
-            return URLEncoder.encode(field.toString());
+            return URLEncoder.encode(field);
         }
     }
 
-    private UriParamsCreator initialFieldsForAddCompany(Company company) throws UnsupportedEncodingException {
+    private UriParamsCreator createFieldsForAddMethod(Company company) throws UnsupportedEncodingException {
         UriParamsCreator params = new UriParamsCreator();
-
-        params.put(TITLE, check(company.getTITLE()));
-        params.put(ADDRESS_PROVINCE, check(company.getADDRESS_PROVINCE()));
-        params.put(ADDRESS_COUNTRY_CODE, check(company.getADDRESS_COUNTRY_CODE()));
-        params.put(ADDRESS_COUNTRY, check(company.getADDRESS_COUNTRY()));
-        params.put(ADDRESS_REGION, check(company.getADDRESS_REGION()));
-        params.put(ADDRESS_CITY, check(company.getADDRESS_CITY()));
-        params.put(ADDRESS, check(company.getADDRESS()));
-        params.put(ADDRESS_2, check(company.getADDRESS_2()));
-        params.put(ADDRESS_LEGAL, check(company.getADDRESS_LEGAL()));
-        params.put(COMMENTS, check(company.getCOMMENTS()));
-        params.put(OPENED, check(company.getOPENED()));
-        params.put(COMPANY_TYPE, check(company.getCOMPANY_TYPE()));
-        params.put(INDUSTRY, check(company.getINDUSTRY()));
-        params.put(EMPLOYEES, check(company.getEMPLOYEES()));
-        params.put(LEAD_ID, check(company.getLEAD_ID()));
-        params.put(BANKING_DETAILS, check(company.getBANKING_DETAILS()));
-
+        params.put(TITLE, check(company.getTitle()));
+        params.put(ADDRESS_PROVINCE, check(company.getAddressProvince()));
+        params.put(ADDRESS_COUNTRY_CODE, check(company.getAddressCountryCode()));
+        params.put(ADDRESS_COUNTRY, check(company.getAddressCountry()));
+        params.put(ADDRESS_REGION, check(company.getAddressRegion()));
+        params.put(ADDRESS_CITY, check(company.getAddressCity()));
+        params.put(ADDRESS, check(company.getAddress()));
+        params.put(ADDRESS_2, check(company.getAddressAdditional()));
+        params.put(ADDRESS_LEGAL, check(company.getAddressLegal()));
+        params.put(COMMENTS, check(company.getComments()));
+        params.put(OPENED, check(company.getOpened()));
+        params.put(COMPANY_TYPE, check(company.getCompanyType()));
+        params.put(INDUSTRY, check(company.getIndustry()));
+        params.put(EMPLOYEES, check(company.getEmployees()));
+        params.put(LEAD_ID, check(company.getLeadId()));
+        params.put(BANKING_DETAILS, check(company.getBankingDetails()));
         return createFinalParams(params, company);
     }
 
-    private UriParamsCreator initialFieldsForUpdateCompany(Company company) throws UnsupportedEncodingException {
+    private UriParamsCreator createFieldsForUpdateMethod(Company company) throws UnsupportedEncodingException {
         UriParamsCreator params = new UriParamsCreator();
-
-        params.put(ID, company.getID().toString());
-        params.put(TITLE, check(company.getTITLE()));
-        params.put(ADDRESS_PROVINCE, check(company.getADDRESS_PROVINCE()));
-        params.put(ADDRESS_COUNTRY_CODE, check(company.getADDRESS_COUNTRY_CODE()));
-        params.put(ADDRESS_COUNTRY, check(company.getADDRESS_COUNTRY()));
-        params.put(ADDRESS_REGION, check(company.getADDRESS_REGION()));
-        params.put(ADDRESS_CITY, check(company.getADDRESS_CITY()));
-        params.put(ADDRESS, check(company.getADDRESS()));
-        params.put(ADDRESS_2, check(company.getADDRESS_2()));
-        params.put(ADDRESS_LEGAL, check(company.getADDRESS_LEGAL()));
-        params.put(COMMENTS, check(company.getCOMMENTS()));
-        params.put(OPENED, check(company.getOPENED()));
-        params.put(COMPANY_TYPE, check(company.getCOMPANY_TYPE()));
-        params.put(INDUSTRY, check(company.getINDUSTRY()));
-        params.put(EMPLOYEES, check(company.getEMPLOYEES()));
-        params.put(LEAD_ID, check(company.getLEAD_ID()));
-        params.put(BANKING_DETAILS, check(company.getBANKING_DETAILS()));
-
+        params.put(ID, company.getId().toString());
+        params.put(TITLE, check(company.getTitle()));
+        params.put(ADDRESS_PROVINCE, check(company.getAddressProvince()));
+        params.put(ADDRESS_COUNTRY_CODE, check(company.getAddressCountryCode()));
+        params.put(ADDRESS_COUNTRY, check(company.getAddressCountry()));
+        params.put(ADDRESS_REGION, check(company.getAddressRegion()));
+        params.put(ADDRESS_CITY, check(company.getAddressCity()));
+        params.put(ADDRESS, check(company.getAddress()));
+        params.put(ADDRESS_2, check(company.getAddressAdditional()));
+        params.put(ADDRESS_LEGAL, check(company.getAddressLegal()));
+        params.put(COMMENTS, check(company.getComments()));
+        params.put(OPENED, check(company.getOpened()));
+        params.put(COMPANY_TYPE, check(company.getCompanyType()));
+        params.put(INDUSTRY, check(company.getIndustry()));
+        params.put(EMPLOYEES, check(company.getEmployees()));
+        params.put(LEAD_ID, check(company.getLeadId()));
+        params.put(BANKING_DETAILS, check(company.getBankingDetails()));
         return createFinalParams(params, company);
     }
 
+    /**
+     * Multiple parameters of Phone, Email, Web, Messenger
+     */
     private UriParamsCreator createFinalParams(UriParamsCreator params, Company company) throws UnsupportedEncodingException {
-
-        //Множественный параметр Phone
-        if (company.getPHONE() != null) {
-            HashMap<String, String> mapPhoto = new MultiFieldsForCompanyCreator().getPhotoFields(company);
+        if (company.getPhones() != null) {
+            HashMap<String, String> mapPhoto = new MultiFields()
+                    .getPhoneFields(company.getPhones());
             for (Map.Entry<String, String> entry : mapPhoto.entrySet()) {
                 String key = entry.getKey();
                 String value = URLEncoder.encode(entry.getValue(), "UTF-8");
@@ -127,10 +126,9 @@ public class ParamCompanyUtils {
             }
         }
 
-
-        //Множественный параметр Email
-        if (company.getEMAIL() != null) {
-            HashMap<String, String> mapEmail = new MultiFieldsForCompanyCreator().getEmailFields(company);
+        if (company.getEmails() != null) {
+            HashMap<String, String> mapEmail = new MultiFields()
+                    .getEmailFields(company.getEmails());
             for (Map.Entry<String, String> entry : mapEmail.entrySet()) {
                 String key = entry.getKey();
                 String value = URLEncoder.encode(entry.getValue(), "UTF-8");
@@ -138,9 +136,9 @@ public class ParamCompanyUtils {
             }
         }
 
-        //Множественный параметр Web
-        if (company.getWEB() != null) {
-            HashMap<String, String> mapWeb = new MultiFieldsForCompanyCreator().getWebsiteFields(company);
+        if (company.getWebsites() != null) {
+            HashMap<String, String> mapWeb = new MultiFields()
+                    .getWebsiteFields(company.getWebsites());
             for (Map.Entry<String, String> entry : mapWeb.entrySet()) {
                 String key = entry.getKey();
                 String value = URLEncoder.encode(entry.getValue(), "UTF-8");
@@ -148,9 +146,9 @@ public class ParamCompanyUtils {
             }
         }
 
-        //Множественный параметр Messenger
-        if (company.getIM() != null) {
-            HashMap<String, String> mapIM = new MultiFieldsForCompanyCreator().getMessengerFields(company);
+        if (company.getMessengers() != null) {
+            HashMap<String, String> mapIM = new MultiFields()
+                    .getMessengerFields(company.getMessengers());
             for (Map.Entry<String, String> entry : mapIM.entrySet()) {
                 String key = entry.getKey();
                 String value = URLEncoder.encode(entry.getValue(), "UTF-8");

@@ -1,99 +1,158 @@
 package com.javastream.entity;
 
+import com.google.gson.annotations.SerializedName;
 import com.javastream.entity.model.Email;
 import com.javastream.entity.model.Messenger;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.model.Website;
-import com.javastream.entity.types.Company_type;
-import com.javastream.entity.types.Employees_type;
-import com.javastream.entity.types.Industry_type;
 import lombok.Data;
 import lombok.ToString;
+
 import java.util.List;
 
-/*  Created by JavaStream   */
-
+/**
+ * Company.
+ *
+ * @author javastream
+ */
 @Data
 @ToString
 public class Company {
-    private Integer ID;
-    private String TITLE;
-    private String ADDRESS_PROVINCE;
-    private String ADDRESS_COUNTRY_CODE;
-    private String ADDRESS_COUNTRY;
-    private String ADDRESS_REGION;
-    private String ADDRESS_CITY;
-    private String ADDRESS_POSTAL_CODE;
-    private String REG_ADDRESS_POSTAL_CODE;
-    private String REG_ADDRESS_COUNTRY;
-    private String ADDRESS_LEGAL;
-    private String REG_ADDRESS_REGION;
-    private String REG_ADDRESS_COUNTRY_CODE;
-    private String REG_ADDRESS_PROVINCE;
-    private String REG_ADDRESS_CITY;
-    private String ADDRESS;
-    private String ADDRESS_2;
-    private String REG_ADDRESS_2;
-    private String REG_ADDRESS;
-    private String ASSIGNED_BY_ID;
-    private String UTM_SOURCE;
-    private String COMMENTS;
-    private String UTM_MEDIUM;
-    private String UTM_CONTENT;
-    //private Date DATE_CREATE;
-    //private Date DATE_MODIFY;
-    private String ORIGIN_ID;
-    private String ORIGINATOR_ID;
-    private String HAS_EMAIL;
-    private String UTM_TERM;
-    private String HAS_IMOL;
-    private String UTM_CAMPAIGN;
-    private String MODIFY_BY_ID;
-    private String CREATED_BY_ID;
-    private String HAS_PHONE;
-    private String OPENED;
-    private String COMPANY_TYPE;
-    private String INDUSTRY;
-    private String EMPLOYEES;
-    private String ORIGIN_VERSION;
-    private String IS_MY_COMPANY;
-    private String LEAD_ID;
-    private String REVENUE;
-    private String BANKING_DETAILS;
-    private List<Email> EMAIL;
-    private List<Phone> PHONE;
-    private List<Messenger> IM;
-    private List<Website> WEB;
+    @SerializedName("ID")
+    private Integer id;
 
-    public void add_companyTitle(String title) {
-       this.COMPANY_TYPE=title;
-    }
+    @SerializedName("TITLE")
+    private String title;
 
-    public void add_companyType(String companyType) {
-        this.COMPANY_TYPE=companyType;
-    }
+    @SerializedName("ADDRESS_PROVINCE")
+    private String addressProvince;
 
-    public void add_companyType(Company_type companyType) {
-        this.COMPANY_TYPE=companyType.getCode();
-    }
+    @SerializedName("ADDRESS_COUNTRY_CODE")
+    private String addressCountryCode;
 
-    public void add_comments(String comments) {
-        this.COMMENTS=comments;
-    }
+    @SerializedName("ADDRESS_COUNTRY")
+    private String addressCountry;
 
-    public void add_industryType(String industryType) {
-        this.INDUSTRY=industryType;
-    }
+    @SerializedName("ADDRESS_REGION")
+    private String addressRegion;
 
-    public void add_industryType(Industry_type industryType) {
-        this.INDUSTRY=industryType.getCode();
-    }
+    @SerializedName("ADDRESS_CITY")
+    private String addressCity;
 
-    public void add_employeesType(String employeesType) {
-        this.EMPLOYEES=employeesType;
-    }
+    @SerializedName("ADDRESS_POSTAL_CODE")
+    private String addressPostalCode;
 
-    public void add_employeesType(Employees_type employeesType) {
-        this.EMPLOYEES=employeesType.getCode();
-    }
+    @SerializedName("REG_ADDRESS_POSTAL_CODE")
+    private String regAddressPostalCode;
+
+    @SerializedName("REG_ADDRESS_COUNTRY")
+    private String regAddressCountry;
+
+    @SerializedName("ADDRESS_LEGAL")
+    private String addressLegal;
+
+    @SerializedName("REG_ADDRESS_REGION")
+    private String regAddressRegion;
+
+    @SerializedName("REG_ADDRESS_COUNTRY_CODE")
+    private String regAddressCountryCode;
+
+    @SerializedName("REG_ADDRESS_PROVINCE")
+    private String regAddressProvince;
+
+    @SerializedName("REG_ADDRESS_CITY")
+    private String regAddressCity;
+
+    @SerializedName("ADDRESS")
+    private String address;
+
+    @SerializedName("ADDRESS_2")
+    private String addressAdditional;
+
+    @SerializedName("REG_ADDRESS")
+    private String regAddress;
+
+    @SerializedName("REG_ADDRESS_2")
+    private String regAddressAdditional;
+
+    @SerializedName("ASSIGNED_BY_ID")
+    private String assignedById;
+
+    @SerializedName("UTM_SOURCE")
+    private String utmSource;
+
+    @SerializedName("COMMENTS")
+    private String comments;
+
+    @SerializedName("UTM_MEDIUM")
+    private String utmMedium;
+
+    @SerializedName("UTM_CONTENT")
+    private String utmContent;
+
+    @SerializedName("ORIGIN_ID")
+    private String originId;
+
+    @SerializedName("ORIGINATOR_ID")
+    private String originatorId;
+
+    @SerializedName("HAS_EMAIL")
+    private String hasEmail;
+
+    @SerializedName("UTM_TERM")
+    private String utmTerm;
+
+    @SerializedName("HAS_IMOL")
+    private String hasImol;
+
+    @SerializedName("UTM_CAMPAIGN")
+    private String utmCampaign;
+
+    @SerializedName("MODIFY_BY_ID")
+    private String modifyById;
+
+    @SerializedName("CREATED_BY_ID")
+    private String createdById;
+
+    @SerializedName("HAS_PHONE")
+    private String hasPhone;
+
+    @SerializedName("OPENED")
+    private String opened;
+
+    @SerializedName("COMPANY_TYPE")
+    private String companyType;
+
+    @SerializedName("INDUSTRY")
+    private String industry;
+
+    @SerializedName("EMPLOYEES")
+    private String employees;
+
+    @SerializedName("ORIGIN_VERSION")
+    private String originVersion;
+
+    @SerializedName("IS_MY_COMPANY")
+    private String isMyCompany;
+
+    @SerializedName("LEAD_ID")
+    private String leadId;
+
+    @SerializedName("REVENUE")
+    private String revenue;
+
+    @SerializedName("BANKING_DETAILS")
+    private String bankingDetails;
+
+    @SerializedName("EMAIL")
+    private List<Email> emails;
+
+    @SerializedName("PHONE")
+    private List<Phone> phones;
+
+    @SerializedName("IM")
+    private List<Messenger> messengers;
+
+    @SerializedName("WEB")
+    private List<Website> websites;
 }

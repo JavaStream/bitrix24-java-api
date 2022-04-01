@@ -12,9 +12,9 @@ public class UpdateProductSection {
          // Инициализация клиента (вебхук токен и аккаунт CRM)
          Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
-        ProductSection productSection = client.getProductSectionService().getProductSection(2);
-        productSection.setNAME("VIP");
-        client.getProductSectionService().updateProductSection(productSection);
+        ProductSection productSection = client.productSectionService().get(2);
+        productSection.setName("VIP");
+        client.productSectionService().update(productSection);
     }
 
 }

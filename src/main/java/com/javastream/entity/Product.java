@@ -1,42 +1,65 @@
 package com.javastream.entity;
 
-import com.javastream.entity.types.Description_type;
-import com.javastream.entity.types.Measure_type;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.ToString;
 
-/*  Created by JavaStream   */
-
+/**
+ * Product.
+ *
+ * @author javastream
+ */
 @Data
 @ToString
 public class Product {
-    private Integer ID;
-    private String NAME;
-    private String ACTIVE;
-    private Integer CREATED_BY;
-    private Integer MODIFIED_BY;
-    private String CURRENCY_ID;
-    private String CATALOG_ID;
-    private String DESCRIPTION;
-    private String DESCRIPTION_TYPE;
-    private String MEASURE;
-    private Double PRICE;
-    private Integer SECTION_ID;
-    private Integer SORT;
-    private Integer VAT_ID;
-    private String VAT_INCLUDED;
-    private String XML_ID;
-    private String CODE;
-    //private Date DATE_CREATE;
-    //private Date DATE_MODIFY;
+    @SerializedName("ID")
+    private Integer id;
 
+    @SerializedName("NAME")
+    private String name;
 
-    public void add_measure(Measure_type measure_type) {
-        this.MEASURE = measure_type.getCode();
-    }
+    @SerializedName("ACTIVE")
+    private String active;
 
-    public void add_descriptionType(Description_type description_type) {
-        this.DESCRIPTION_TYPE = description_type.getCode();
-    }
+    @SerializedName("CREATED_BY")
+    private Integer createdBy;
 
+    @SerializedName("MODIFIED_BY")
+    private Integer modifiedBy;
+
+    @SerializedName("CURRENCY_ID")
+    private String currencyId;
+
+    @SerializedName("CATALOG_ID")
+    private String catalogId;
+
+    @SerializedName("DESCRIPTION")
+    private String description;
+
+    @SerializedName("DESCRIPTION_TYPE")
+    private String descriptionType;
+
+    @SerializedName("MEASURE")
+    private String measure;
+
+    @SerializedName("PRICE")
+    private Double price;
+
+    @SerializedName("SECTION_ID")
+    private Integer sectionId;
+
+    @SerializedName("SORT")
+    private Integer sort;
+
+    @SerializedName("VAT_ID")
+    private Integer vatId;
+
+    @SerializedName("VAT_INCLUDED")
+    private String vatIncluded;
+
+    @SerializedName("XML_ID")
+    private String xmlId;
+
+    @SerializedName("CODE")
+    private String code;
 }

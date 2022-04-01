@@ -1,8 +1,11 @@
 package com.javastream.entity.types;
 
-
-public enum Website_type {
-
+/**
+ * WebsiteType.
+ *
+ * @author javastream
+ */
+public enum WebsiteType {
     WORK("WORK"),
     HOME("HOME"),
     FACEBOOK("FACEBOOK"),
@@ -13,10 +16,11 @@ public enum Website_type {
 
     private String code;
 
-    Website_type(String code){
+    WebsiteType(String code) {
         this.code = code;
     }
 
-    public String getCode(){ return code;}
-
+    public String getCode() {
+        return code;
+    }
 }

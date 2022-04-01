@@ -1,8 +1,11 @@
 package com.javastream.entity.types;
 
-
-public enum Messengers_type {
-
+/**
+ * MessengerType.
+ *
+ * @author javastream
+ */
+public enum MessengerType {
     FACEBOOK("FACEBOOK"),
     TELEGRAM("TELEGRAM"),
     VK("VK"),
@@ -19,10 +22,11 @@ public enum Messengers_type {
 
     private String code;
 
-    Messengers_type(String code){
+    MessengerType(String code) {
         this.code = code;
     }
 
-    public String getCode(){ return code;}
-
+    public String getCode() {
+        return code;
+    }
 }

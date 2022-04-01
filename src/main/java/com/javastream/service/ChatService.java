@@ -15,6 +15,11 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ChatService.
+ *
+ * @author javastream
+ */
 public class ChatService {
 
     private Logger logger = LoggerFactory.getLogger(ChatService.class);
@@ -26,15 +31,15 @@ public class ChatService {
     private final static String ADD_CHAT_METHOD = "im.chat.add";
     private final static String LEAD = "LEAD";
     private final static String SLASH_PATTERN = "|";
-
     private Chat chat = null;
 
-    public Chat getChat(Object entity) {
+    public Chat get(Object entity) {
         UriParamsCreator params = new UriParamsCreator();
         logger.info("Initializing chat service");
 
         if (entity instanceof Lead)
-            params = new ParamChatUtils().getParamsForGetChat(LEAD + SLASH_PATTERN + ((Lead) entity).getID().toString());
+            params = new ParamChatUtils()
+                    .paramsForGetChat(LEAD + SLASH_PATTERN + ((Lead) entity).getId().toString());
         JSONObject json = PushRunner.get(params, GET_METHOD);
 
         if (json != null) {
@@ -48,14 +53,14 @@ public class ChatService {
 
     public void muteNotifications(Chat chat, String yesOrNot) {
         logger.info("Mute of Notifications: {}", yesOrNot);
-        UriParamsCreator params = new ParamChatUtils().getParamsForChatNotifications(chat.getID(), yesOrNot);
+        UriParamsCreator params = new ParamChatUtils().paramsForChatNotifications(chat.getId(), yesOrNot);
         PushRunner.post(params, MUTE_METHOD);
     }
 
     public List<User> getUsers(Chat chat) {
         logger.info("Request to get a list of users from chat: {}", chat);
 
-        UriParamsCreator params = new ParamChatUtils().getParamsForGetUsersInChat(chat);
+        UriParamsCreator params = new ParamChatUtils().paramsForGetUsersInChat(chat);
         JSONObject json = PushRunner.get(params, USER_LIST_METHOD);
         JSONArray jsonResult = json.getJSONArray("result");
 
@@ -72,7 +77,7 @@ public class ChatService {
     public List<User> getListBusinessUsers() {
         logger.info("Request to get a list of business users from chat");
 
-        UriParamsCreator params = new ParamChatUtils().getParamsForGetBusinessUsersInChat();
+        UriParamsCreator params = new ParamChatUtils().paramsForGetBusinessUsersInChat();
         JSONObject json = PushRunner.get(params, BUSINESS_USER_LIST_METHOD);
         JSONArray jsonResult = json.getJSONArray("result");
 
@@ -87,10 +92,10 @@ public class ChatService {
     }
 
     public void createChat(Chat chat, Lead lead, List<User> users) {
-        if (chat.getMESSAGE() != null) {
-            logger.info("New chat {} was created", chat.getID());
+        if (chat.getMessage() != null) {
+            logger.info("New chat {} was created", chat.getId());
 
-            UriParamsCreator params = new ParamChatUtils().getParamsForCreateChat(chat, lead, users);
+            UriParamsCreator params = new ParamChatUtils().paramsForCreateChat(chat, lead, users);
             PushRunner.post(params, ADD_CHAT_METHOD);
         } else {
             logger.warn("The created Chat must contain a message. This is a required field! It can be done like this: chat.setMESSAGE(\"Your message..\")");

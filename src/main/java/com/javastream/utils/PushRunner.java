@@ -76,6 +76,6 @@ public class PushRunner {
     }
 
     private static String getRestID() {
-        return Settings.getRest_ID().toString();
+        return Settings.getRestID().toString();
     }
 }

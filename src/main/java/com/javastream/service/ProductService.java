@@ -11,6 +11,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * ProductService.
+ *
+ * @author javastream
+ */
 public class ProductService {
 
     private Logger logger = LoggerFactory.getLogger(LeadService.class);
@@ -20,31 +25,31 @@ public class ProductService {
     private final static String GET_METHOD = "crm.product.get";
     private final static String UPDATE_METHOD = "crm.product.update";
 
-    public void addProduct(Product product) {
-        logger.info("Request: Add a new product: {}", product.getID());
-        UriParamsCreator params = new ParamProductUtils().getParamsForAddProduct(product);
+    public void add(Product product) {
+        logger.info("Request: Add a new product: {}", product.getId());
+        UriParamsCreator params = new ParamProductUtils().addMethod(product);
         PushRunner.post(params, ADD_METHOD);
     }
 
-    public void deleteProduct(Integer idProduct) {
+    public void delete(Integer idProduct) {
         logger.info("Request: Delete the product by id: {}", idProduct);
-        UriParamsCreator params = new ParamProductUtils().getParamsForDeleteProduct(idProduct);
+        UriParamsCreator params = new ParamProductUtils().deleteMethod(idProduct);
         PushRunner.post(params, DELETE_METHOD);
     }
 
-    public Product getProduct(Integer idProduct) {
+    public Product get(Integer idProduct) {
         logger.info("Request: Get the product by id: {}", idProduct);
-        UriParamsCreator params = new ParamProductUtils().getParamsForGetProduct(idProduct);
+        UriParamsCreator params = new ParamProductUtils().getMethod(idProduct);
         JSONObject jsonMain = PushRunner.get(params, GET_METHOD);
         JSONObject jsonResult = jsonMain.getJSONObject("result");
         Gson gson = new Gson();
         return gson.fromJson(jsonResult.toString(), Product.class);
     }
 
-    public void updateProduct(Product product) {
-        logger.info("Request: Update the product by id: {}, name: {}", product.getID(), product.getNAME());
+    public void update(Product product) {
+        logger.info("Request: Update the product by id: {}, name: {}", product.getId(), product.getName());
         try {
-            UriParamsCreator params = new ParamProductUtils().getParamsForUpdateProduct(product);
+            UriParamsCreator params = new ParamProductUtils().updateMethod(product);
             PushRunner.post(params, UPDATE_METHOD);
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while updating product", e);

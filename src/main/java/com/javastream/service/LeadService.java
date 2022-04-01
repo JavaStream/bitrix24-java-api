@@ -11,6 +11,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * LeadService.
+ *
+ * @author javastream
+ */
 public class LeadService {
 
     private Logger logger = LoggerFactory.getLogger(LeadService.class);
@@ -20,35 +25,37 @@ public class LeadService {
     private final static String DELETE_METHOD = "crm.lead.delete";
     private final static String UPDATE_METHOD = "crm.lead.update";
 
-    public void addNewLead(Lead lead) {
-        logger.info("Request: Add a new lead: {}", lead.getID());
+    public void add(Lead lead) {
+        logger.info("Request: Add a new lead: {}", lead.getId());
         try {
-            UriParamsCreator params = new ParamLeadUtils().getParamsForAddLead(lead);
+            UriParamsCreator params = new ParamLeadUtils().addMethod(lead);
             PushRunner.post(params, ADD_METHOD);
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while adding new lead", e);
         }
     }
 
-    public Lead getLeadById(Integer idLead) {
+    public Lead get(Integer idLead) {
         logger.info("Request: Get the lead by id: {}", idLead);
-        UriParamsCreator params = new ParamLeadUtils().getParamsForGetLead(idLead);
+        UriParamsCreator params = new ParamLeadUtils().getMethod(idLead);
         JSONObject json = PushRunner.get(params, GET_METHOD);
         JSONObject result = json.getJSONObject("result");
         Gson gson = new Gson();
         return gson.fromJson(result.toString(), Lead.class);
     }
 
-    public void deleteLeadById(Integer idLead) {
+    public void delete(Integer idLead) {
         logger.info("Request: Delete the lead by id: {}", idLead);
-        UriParamsCreator params = new ParamLeadUtils().getParamsForDeleteLead(idLead);
+        UriParamsCreator params = new ParamLeadUtils().deleteMethod(idLead);
         PushRunner.post(params, DELETE_METHOD);
     }
 
-    public void updateLead(Lead lead) {
-        logger.info("Request: Update the lead by id: {}, title: {}", lead.getID(), lead.getTITLE());
+    // TODO delete by Lead
+
+    public void update(Lead lead) {
+        logger.info("Request: Update the lead by id: {}, title: {}", lead.getId(), lead.getTitle());
         try {
-            UriParamsCreator params = new ParamLeadUtils().getParamsForUpdateLead(lead);
+            UriParamsCreator params = new ParamLeadUtils().updateMethod(lead);
             PushRunner.post(params, UPDATE_METHOD);
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while updating lead", e);

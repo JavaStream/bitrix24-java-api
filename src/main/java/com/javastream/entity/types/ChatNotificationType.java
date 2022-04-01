@@ -1,17 +1,19 @@
 package com.javastream.entity.types;
 
-
-public enum ChatNotifications_type {
-
+/**
+ * ChatNotificationType.
+ *
+ * @author javastream
+ */
+public enum ChatNotificationType {
     YES("Y"),
     NOT("N");
 
     private String code;
 
-    ChatNotifications_type(String code){
+    ChatNotificationType(String code){
         this.code = code;
     }
 
     public String getCode(){ return code;}
-
 }

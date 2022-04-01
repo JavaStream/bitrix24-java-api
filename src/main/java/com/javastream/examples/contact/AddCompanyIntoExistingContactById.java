@@ -12,13 +12,9 @@ public class AddCompanyIntoExistingContactById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         //Получаем карточку клиента по ID контакта
-        Contact contact = client.getContactService().getContactById(74);
+        Contact contact = client.contactService().get(74);
 
-        // Первый способ - сетим поле COMPANY_ID. Здесь ID уже созданной в CRM компании
-        contact.setCOMPANY_ID("2");
-
-        // Второй способ
-        contact.add_company(2);
+        contact.setCompanyId("2");
 
     }
 }
