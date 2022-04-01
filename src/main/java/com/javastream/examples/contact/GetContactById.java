@@ -13,6 +13,6 @@ public class GetContactById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         //Получаем карточку клиента по ID контакта
-        Contact contact = client.getContactService().getContactById(74);
+        Contact contact = client.contactService().get(74);
     }
 }

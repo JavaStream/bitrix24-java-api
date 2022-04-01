@@ -12,7 +12,7 @@ public class DeleteContactById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         // Удалить Контакт по его ID
-        client.getContactService().deleteContactById(72);
+        client.contactService().delete(72);
     }
 }
 

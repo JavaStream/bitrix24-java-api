@@ -13,10 +13,9 @@ public class AddNewProductSection {
        Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         ProductSection productSection = new ProductSection();
-        productSection.add_name("Auto");
-        productSection.setSECTION_ID(12); // Main category
+        productSection.setSectionId(12); // Main category
 
-        client.getProductSectionService().addProductSection(productSection);
+        client.productSectionService().add(productSection);
     }
 
 }

@@ -2,9 +2,6 @@ package com.javastream.examples.company;
 
 import com.javastream.Client;
 import com.javastream.entity.Company;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 /*  Created by JavaStream   */
 
@@ -18,8 +15,8 @@ public class GetCompanyById {
 
 
         // Получаем Лид по его ID
-        Company company = client.getCempanyService().getCompanyById(2);
-        System.out.println("ID = " + company.getID());
+        Company company = client.companyService().get(2);
+        System.out.println("ID = " + company.getId());
     }
 
     //@PostConstruct

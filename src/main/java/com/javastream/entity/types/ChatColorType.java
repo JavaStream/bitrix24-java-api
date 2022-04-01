@@ -1,8 +1,11 @@
 package com.javastream.entity.types;
 
-
-public enum ChatColors_type {
-
+/**
+ * ChatColorType.
+ *
+ * @author javastream
+ */
+public enum ChatColorType {
     RED("RED"),
     GREEN("GREEN"),
     MINT("MINT"),
@@ -20,13 +23,11 @@ public enum ChatColors_type {
     GRAY("GRAY"),
     GRAPHITE("GRAPHITE");
 
-
     private String code;
 
-    ChatColors_type(String code){
+    ChatColorType(String code){
         this.code = code;
     }
 
     public String getCode(){ return code;}
-
 }

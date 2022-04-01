@@ -1,130 +1,143 @@
 package com.javastream.entity;
 
+import com.google.gson.annotations.SerializedName;
 import com.javastream.entity.model.Email;
 import com.javastream.entity.model.Messenger;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.model.Website;
-import com.javastream.entity.types.CurrencyID_type;
-import com.javastream.entity.types.SourceID_type;
-import com.javastream.entity.types.StatusID_type;
 import lombok.Data;
 import lombok.ToString;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-/*  Created by JavaStream   */
-
+/**
+ * Lead.
+ *
+ * @author javastream
+ */
 @Data
 @ToString
 public class Lead {
-    private Integer ID;
-    private String TITLE;
-    private String NAME;
-    private String LAST_NAME;
-    private String SECOND_NAME;
-    private String CONTACT_ID;
-    private String STATUS_ID;
-    private String CURRENCY_ID;
-    private String ADDRESS_PROVINCE;
-    private String ADDRESS_COUNTRY_CODE;
-    private String ADDRESS_COUNTRY;
-    private String ADDRESS_REGION;
-    private String ADDRESS_CITY;
-    private String ADDRESS;
-    private String POST;
-    private String OPPORTUNITY;
-    private String ASSIGNED_BY_ID;
-    private String UTM_SOURCE;
-    private String COMMENTS;
-    //private Date BIRTHDATE;
-    private String UTM_MEDIUM;
-    private String STATUS_SEMANTIC_ID;
-    private String HONORIFIC;
-    private String UTM_CONTENT;
-    private String IS_RETURN_CUSTOMER;
-    private String COMPANY_ID;
-    //private Date DATE_CREATE;
-    //private Date DATE_MODIFY;/
-    //private Date DATE_CLOSED;
-    private String SOURCE_ID;
-    private String ORIGIN_ID;
-    private String COMPANY_TITLE;
-    private String ORIGINATOR_ID;
-    private String STATUS_DESCRIPTION;
-    private String HAS_EMAIL;
-    private String UTM_TERM;
-    private String HAS_IMOL;
-    private String UTM_CAMPAIGN;
-    private String CREATED_BY_ID;
-    private String HAS_PHONE;
-    private String OPENED;
-    private List<Email> EMAIL;
-    private List<Phone> PHONE;
-    private List<Messenger> IM;
-    private List<Website> WEB;
+    @SerializedName("ID")
+    private Integer id;
 
-    public void add_title(String title) {
-        this.TITLE = title;
-    }
+    @SerializedName("TITLE")
+    private String title;
 
-    public void add_name(String name) {
-        this.NAME = name;
-    }
+    @SerializedName("NAME")
+    public String name;
 
-    public void add_lastName(String lastName) {
-        this.LAST_NAME = lastName;
-    }
+    @SerializedName("LAST_NAME")
+    private String lastName;
 
-    public void add_secondName(String secondName) {
-        this.SECOND_NAME = secondName;
-    }
+    @SerializedName("SECOND_NAME")
+    private String secondName;
 
-    public void add_statusId(String status) {
-        this.STATUS_ID = status;
-    }
+    @SerializedName("CONTACT_ID")
+    private String contactId;
 
-    public void add_statusId(StatusID_type statusID_type) {
-        this.STATUS_ID = statusID_type.getCode();
-    }
+    @SerializedName("STATUS_ID")
+    private String statusId;
 
-    public void add_currency(String currency) {
-        this.CURRENCY_ID = currency;
-    }
+    @SerializedName("CURRENCY_ID")
+    private String currencyId;
 
-    public void add_currency(CurrencyID_type currencyID_type) {
-        this.CURRENCY_ID = currencyID_type.getCode();
-    }
+    @SerializedName("ADDRESS_PROVINCE")
+    private String addressProvince;
 
-    public void add_opportunity(String opportunity) {
-        this.OPPORTUNITY = opportunity;
-    }
+    @SerializedName("ADDRESS_COUNTRY_CODE")
+    private String addressCountryCode;
 
-    public void add_amount(String amount) {
-        this.OPPORTUNITY = amount;
-    }
+    @SerializedName("ADDRESS_COUNTRY")
+    private String addressCountry;
 
-    public void add_post(String post) {
-        this.POST = post;
-    }
+    @SerializedName("ADDRESS_REGION")
+    private String addressRegion;
 
-    public void add_comments(String comments) {
-        this.COMMENTS = comments;
-    }
+    @SerializedName("ADDRESS_CITY")
+    private String addressCity;
 
-    public void add_company(Integer companyId) {
-        this.COMPANY_ID = companyId.toString();
-    }
+    @SerializedName("ADDRESS")
+    private String address;
 
-    public void add_companyTitle(String companyTitle) {
-        this.COMPANY_TITLE = companyTitle;
-    }
+    @SerializedName("POST")
+    private String post;
 
-    public void add_sourceId(String sourceId) {
-        this.SOURCE_ID = sourceId;
-    }
+    @SerializedName("OPPORTUNITY")
+    private String opportunity;
 
-    public void add_sourceId(SourceID_type sourceID_type) {
-        this.SOURCE_ID = sourceID_type.getCode();
-    }
+    @SerializedName("ASSIGNED_BY_ID")
+    private String assignedById;
+
+    @SerializedName("UTM_SOURCE")
+    private String utmSource;
+
+    @SerializedName("COMMENTS")
+    private String comments;
+
+    @SerializedName("UTM_MEDIUM")
+    private String utmMedium;
+
+    @SerializedName("STATUS_SEMANTIC_ID")
+    private String statusSemanticId;
+
+    @SerializedName("HONORIFIC")
+    private String honorific;
+
+    @SerializedName("UTM_CONTENT")
+    private String utmContent;
+
+    @SerializedName("IS_RETURN_CUSTOMER")
+    private String isReturnCustomer;
+
+    @SerializedName("COMPANY_ID")
+    private String companyId;
+
+    @SerializedName("SOURCE_ID")
+    private String sourceId;
+
+    @SerializedName("ORIGIN_ID")
+    private String originId;
+
+    @SerializedName("COMPANY_TITLE")
+    private String companyTitle;
+
+    @SerializedName("ORIGINATOR_ID")
+    private String originatorId;
+
+    @SerializedName("STATUS_DESCRIPTION")
+    private String statusDescription;
+
+    @SerializedName("HAS_EMAIL")
+    private String hasEmail;
+
+    @SerializedName("UTM_TERM")
+    private String utmTerm;
+
+    @SerializedName("HAS_IMOL")
+    private String hasImol;
+
+    @SerializedName("UTM_CAMPAIGN")
+    private String utmCampaign;
+
+    @SerializedName("CREATED_BY_ID")
+    private String createdById;
+
+    @SerializedName("HAS_PHONE")
+    private String hasPhone;
+
+    @SerializedName("OPENED")
+    private String opened;
+
+    @SerializedName("EMAIL")
+    private List<Email> emails;
+
+    @SerializedName("PHONE")
+    private List<Phone> phones;
+
+    @SerializedName("IM")
+    private List<Messenger> messengers;
+
+    @SerializedName("WEB")
+    private List<Website> websites;
 }

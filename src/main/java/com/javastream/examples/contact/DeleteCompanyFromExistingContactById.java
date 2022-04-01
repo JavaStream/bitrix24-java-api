@@ -13,7 +13,7 @@ public class DeleteCompanyFromExistingContactById {
         Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
         // Отцепляем указанную компанию от данной карточки контакта
-        client.getContactService().deleteCompanyFromExistingContactById(74, 2);
+        client.contactService().deleteCompanyFromExistingContactById(74, 2);
     }
 
 }

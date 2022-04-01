@@ -12,7 +12,7 @@ public class GetProductSection {
          // Инициализация клиента (вебхук токен и аккаунт CRM)
          Client client = new Client("token", "your-account.bitrix24.ru", 1);
 
-         ProductSection productSection = client.getProductSectionService().getProductSection(2);
+         ProductSection productSection = client.productSectionService().get(2);
 
     }
 

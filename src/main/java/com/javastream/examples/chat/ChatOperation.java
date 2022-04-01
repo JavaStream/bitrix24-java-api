@@ -4,39 +4,29 @@ import com.javastream.Client;
 import com.javastream.entity.Chat;
 import com.javastream.entity.Lead;
 import com.javastream.entity.model.chat.User;
-import com.javastream.entity.types.ChatColors_type;
-import com.javastream.entity.types.ChatNotifications_type;
-import org.springframework.stereotype.Service;
+import com.javastream.entity.types.ChatColorType;
 
-import javax.annotation.PostConstruct;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /*  Created by JavaStream   */
 
-//@Service
 public class ChatOperation {
 
     public void start() {
 
         Client client = new Client("2d3gjcvoqtccq5al", "b24-v12wfp.bitrix24.ru", 1);
-        Lead lead = client.getLeadService().getLeadById(2);
+        Lead lead = client.leadService().get(2);
         System.out.println(lead);
-        Chat chat = client.getChatService().getChat(lead);
+        Chat chat = client.chatService().get(lead);
         System.out.println(chat);
-        List<User> userList = client.getChatService().getUsers(chat);
+        List<User> userList = client.chatService().getUsers(chat);
         System.out.println(userList);
         Chat chatNew = new Chat();
-        chatNew.setCOLOR(ChatColors_type.AZURE.getCode());
-        chatNew.setDESCRIPTION("Conversation with a client #40");
-        chatNew.setMESSAGE("Hello customer #40!");
-        chatNew.setTITLE("Customer " + lead.getTITLE());
-        client.getChatService().createChat(chatNew, lead, userList);
+        chatNew.setColor(ChatColorType.AZURE.getCode());
+        chatNew.setDescription("Conversation with a client #40");
+        chatNew.setMessage("Hello customer #40!");
+        chatNew.setTitle("Customer " + lead.getTitle());
+        client.chatService().createChat(chatNew, lead, userList);
 
     }
 

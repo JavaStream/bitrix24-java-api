@@ -1,9 +1,6 @@
 package com.javastream.examples.company;
 
 import com.javastream.Client;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 
 /*  Created by JavaStream   */
 
@@ -16,7 +13,7 @@ public class DeleteCompanyById {
 
 
         // Удаляет Лид по его ID (в примере удаляется лид с id=8)
-        client.getCempanyService().deleteCompanyById(4);
+        client.companyService().delete(4);
     }
 
 }

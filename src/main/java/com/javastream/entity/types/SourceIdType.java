@@ -1,8 +1,11 @@
 package com.javastream.entity.types;
 
-
-public enum SourceID_type {
-
+/**
+ * SourceIdType.
+ *
+ * @author javastream
+ */
+public enum SourceIdType {
     CALL("CALL"),
     EMAIL("EMAIL"),
     WEB("WEB"),
@@ -18,11 +21,11 @@ public enum SourceID_type {
 
     private String code;
 
-    SourceID_type(String code){
+    SourceIdType(String code) {
         this.code = code;
     }
 
-    public String getCode(){ return code;}
-
+    public String getCode() {
+        return code;
+    }
 }
-// ORIGIN_ID

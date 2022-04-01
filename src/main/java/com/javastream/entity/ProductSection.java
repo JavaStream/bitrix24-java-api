@@ -1,20 +1,29 @@
 package com.javastream.entity;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.ToString;
 
-/*  Created by JavaStream   */
-
+/**
+ * ProductSection.
+ *
+ * @author javastream
+ */
 @Data
 @ToString
 public class ProductSection {
-    private Integer ID;
-    private Integer CATALOG_ID;
-    private Integer SECTION_ID;
-    private String NAME;
-    private String XML_ID;
+    @SerializedName("ID")
+    private Integer id;
 
-    public void add_name(String name) {
-        this.NAME = name;
-    }
+    @SerializedName("CATALOG_ID")
+    private Integer catalogId;
+
+    @SerializedName("SECTION_ID")
+    private Integer sectionId;
+
+    @SerializedName("NAME")
+    private String name;
+
+    @SerializedName("XML_ID")
+    private String xmlId;
 }

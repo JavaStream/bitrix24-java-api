@@ -4,15 +4,17 @@ import com.javastream.entity.Chat;
 import com.javastream.entity.Lead;
 import com.javastream.entity.model.chat.User;
 import com.javastream.uriParamsCreator.UriParamsCreator;
-import org.springframework.stereotype.Service;
 
 import java.net.URLEncoder;
 import java.util.List;
 
 
-@Service
+/**
+ * ParamChatUtils.
+ *
+ * @author javastream
+ */
 public class ParamChatUtils {
-
     private final static String ENTITY_ID = "ENTITY_ID";
     private final static String ENTITY_TYPE = "ENTITY_TYPE";
     private final static String CHAT_ID = "CHAT_ID";
@@ -29,7 +31,7 @@ public class ParamChatUtils {
     private final static String N_TYPE = "N";
     private final static String PIPELINE_PATTERN = "|";
 
-    public UriParamsCreator getParamsForGetChat(String entityName)  {
+    public UriParamsCreator paramsForGetChat(String entityName) {
         UriParamsCreator params = new UriParamsCreator();
         params.put(ENTITY_ID, check(entityName));
         params.put(ENTITY_TYPE, CRM_TYPE);
@@ -37,7 +39,7 @@ public class ParamChatUtils {
         return params;
     }
 
-    public UriParamsCreator getParamsForChatNotifications(String chatId, String yesOrNot) {
+    public UriParamsCreator paramsForChatNotifications(String chatId, String yesOrNot) {
         UriParamsCreator params = new UriParamsCreator();
         params.put(CHAT_ID, chatId);
         params.put(MUTE, yesOrNot);
@@ -45,30 +47,29 @@ public class ParamChatUtils {
         return params;
     }
 
-    public UriParamsCreator getParamsForGetUsersInChat(Chat chat) {
+    public UriParamsCreator paramsForGetUsersInChat(Chat chat) {
         UriParamsCreator params = new UriParamsCreator();
-        params.put(CHAT_ID, chat.getID());
+        params.put(CHAT_ID, chat.getId());
         params.build();
         return params;
     }
 
-    public UriParamsCreator getParamsForGetBusinessUsersInChat() {
+    public UriParamsCreator paramsForGetBusinessUsersInChat() {
         UriParamsCreator params = new UriParamsCreator();
         params.put(USER_DATA, N_TYPE);
         params.build();
         return params;
     }
 
-    public UriParamsCreator getParamsForCreateChat(Chat chat, Lead lead, List<User> users) {
+    public UriParamsCreator paramsForCreateChat(Chat chat, Lead lead, List<User> users) {
         UriParamsCreator params = new UriParamsCreator();
         params.put(ENTITY_TYPE, CRM_TYPE);
-        params.put(MESSAGE, check(chat.getMESSAGE()));
+        params.put(MESSAGE, check(chat.getMessage()));
         params.put(USERS, check(getList(users).toString()));
-        params.put(ENTITY_ID, check(LEAD + PIPELINE_PATTERN + lead.getID()));
-        params.put(COLOR, chat.getCOLOR());
-        params.put(TITLE, check(chat.getTITLE()));
-        params.put(DESCRIPTION, check(chat.getDESCRIPTION()));
-
+        params.put(ENTITY_ID, check(LEAD + PIPELINE_PATTERN + lead.getId()));
+        params.put(COLOR, chat.getColor());
+        params.put(TITLE, check(chat.getTitle()));
+        params.put(DESCRIPTION, check(chat.getDescription()));
         params.build();
         return params;
     }

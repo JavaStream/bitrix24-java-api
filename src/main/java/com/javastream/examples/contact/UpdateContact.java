@@ -3,10 +3,8 @@ package com.javastream.examples.contact;
 import com.javastream.Client;
 import com.javastream.entity.Contact;
 import com.javastream.entity.model.Phone;
-import com.javastream.entity.types.Phone_type;
-import org.springframework.stereotype.Component;
+import com.javastream.entity.types.PhoneType;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,29 +19,29 @@ public class UpdateContact {
         Client client = new Client("wovpq8bg7tq7of0b", "b24-v12wfp.bitrix24.ru", 1);
 
         //Получаем карточку клиента по ID контакта
-        Contact contact = client.getContactService().getContactById(2);
+        Contact contact = client.contactService().get(2);
 
         // Простые поля типа String можно просто засетить новые данные
-        contact.setCOMPANY_ID("2");
-        contact.setNAME("Джон");
+        contact.setCompanyId("2");
+        contact.setName("Джон");
 
         //В множественные поля, содержащие в себе списки, вносятся иначе (напримере, телефона)
         // 1. Добавить новый телефон. Не укаызваем ID и ID_Type (будут присвоены самой CRM)
         List<Phone> listPhone = new ArrayList<>();
         Phone phone = Phone.builder()
-                .VALUE("601-00-00").VALUE_TYPE(Phone_type.MOBILE.getCode()).build();
+                .value("601-00-00").valueType(PhoneType.MOBILE.getCode()).build();
         listPhone.add(phone);
-        contact.setPHONE(listPhone);
-        client.getContactService().updateContact(contact);
+        contact.setPhones(listPhone);
+        client.contactService().update(contact);
 
 
         // 2. Изменить существующий телефон (Получаем объект Phone, сетим новые значения Value и(или) Value_type и делаем update)
-        Phone phone2 = contact.getPHONE().get(0);
-        phone2.setVALUE("222-22-22");
+        Phone phone2 = contact.getPhones().get(0);
+        phone2.setValue("222-22-22");
         List<Phone> phoneList = new ArrayList<>();
         phoneList.add(phone2);
-        contact.setPHONE(phoneList);
-        client.getContactService().updateContact(contact);
+        contact.setPhones(phoneList);
+        client.contactService().update(contact);
     }
 
     //@PostConstruct
