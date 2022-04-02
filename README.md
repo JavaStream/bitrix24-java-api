@@ -197,8 +197,8 @@ client.productSectionService().update(productSection);
 **Chats with a Leads**
 
 ```java
-Lead lead = client.leadService().get(42);                                      			  // Get a Lead (for example, id = 42)
-Chat chat = client.chatService().get(lead);                                        		  // Get the chat whith this Lead
+Lead lead = client.leadService().get(42);                                      		  // Get a Lead (for example, id = 42)
+Chat chat = client.chatService().get(lead);                                        	  // Get the chat whith this Lead
 List<User> userList = client.chatService().getUsers(chat);                             	  // Get the list of users of this chat 
 List<User> userList = client.chatService().getListBusinessUsers();                     	  // Get a list of all business users
 client.chatService().muteNotifications(chat, ChatNotificationType.YES.getCode());    	  // Turn off chat notifications 
