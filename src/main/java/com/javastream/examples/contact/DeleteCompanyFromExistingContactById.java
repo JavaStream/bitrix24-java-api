@@ -1,19 +1,22 @@
 package com.javastream.examples.contact;
 
-/*  Created by JavaStream   */
-
 import com.javastream.Client;
+import com.javastream.configs.Configs;
 
-
+/**
+ * DeleteCompanyFromExistingContactById.
+ *
+ * @author javastream
+ */
 public class DeleteCompanyFromExistingContactById {
 
-    public void start() {
+    public static void main(String[] args) {
+        Client client = new Client(
+                Configs.token,
+                Configs.account,
+                Configs.restId
+        );
 
-        // Инициализация клиента (вебхук токен и аккаунт CRM)
-        Client client = new Client("token", "your-account.bitrix24.ru", 1);
-
-        // Отцепляем указанную компанию от данной карточки контакта
         client.contactService().deleteCompanyFromExistingContactById(74, 2);
     }
-
 }

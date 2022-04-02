@@ -1,19 +1,23 @@
 package com.javastream.examples.productSection;
 
 import com.javastream.Client;
+import com.javastream.configs.Configs;
 import com.javastream.entity.ProductSection;
 
-/*  Created by JavaStream   */
-
+/**
+ * GetProductSection.
+ *
+ * @author javastream
+ */
 public class GetProductSection {
 
-    public void start() {
+    public static void main(String[] args) {
+        Client client = new Client(
+                Configs.token,
+                Configs.account,
+                Configs.restId
+        );
 
-         // Инициализация клиента (вебхук токен и аккаунт CRM)
-         Client client = new Client("token", "your-account.bitrix24.ru", 1);
-
-         ProductSection productSection = client.productSectionService().get(2);
-
+        ProductSection productSection = client.productSectionService().get(2);
     }
-
 }

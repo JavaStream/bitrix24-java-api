@@ -1,17 +1,22 @@
 package com.javastream.examples.productSection;
 
 import com.javastream.Client;
+import com.javastream.configs.Configs;
 
-/*  Created by JavaStream   */
-
+/**
+ * DeleteProductSection.
+ *
+ * @author javastream
+ */
 public class DeleteProductSection {
 
-    public void start() {
-
-         // Инициализация клиента (вебхук токен и аккаунт CRM)
-         Client client = new Client("token", "your-account.bitrix24.ru", 1);
+    public static void main(String[] args) {
+        Client client = new Client(
+                Configs.token,
+                Configs.account,
+                Configs.restId
+        );
 
         client.productSectionService().delete(2);
     }
-
 }
