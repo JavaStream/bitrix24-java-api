@@ -89,8 +89,7 @@ EXAMPLES
 **Contact**  
 
 ```java
-// 1. Create a new Contact (name and lastname are mandatory fields)
-
+// 1. CREATE (name and lastname are mandatory fields)
 Contact contact = new Contact("Robert", "Kane"); 
 contact.setTypeId(TypeIdContact.CLIENT.getCode());
 contact.setPhones(phoneList);
@@ -99,13 +98,13 @@ contact.setComments("best contact");
 contact.setCompanyId("2");
 client.contactService().add(contact);
 
-// 2. Get a Contact by ID (For example, 74)
+// 2. GET
 Contact contact = client.contactService().get(74);
 
-// 3. Delete a Contact
+// 3. DELETE
 client.contactService().delete(72);
 
-// 4. Update a Contact
+// 4. UPDATE
 contact.setCompanyId("2");
 contact.setName("Джон");
 client.contactService().update(contact);
@@ -115,26 +114,27 @@ client.contactService().update(contact);
 **Lead**
 
 ```java
-// 1. Create a new Lead	
+// 1. CREATE	
 Lead lead = new Lead();
 lead.setTitle("Test2");
 lead.setSourceId(SourceIdType.ADVERTISING.getCode());
 lead.setAddress("England, Rosenberg str, 100");
 Phone phone = Phone.builder()
-		.value("89110225686").valueType(PhoneType.HOME.getCode()).build();
+		.value("89110225686")
+		.valueType(PhoneType.HOME.getCode())
+		.build();
 List<Phone> listPhones = new ArrayList<>();
 listPhones.add(phone);
 lead.setPhones(listPhones);
 client.leadService().add(lead);
 
-// 2. Get a Lead by ID 
+// 2. GET
 Lead lead = client.leadService().get(2);
 
-// 3. Delete a Lead 
+// 3. DELETE
 client.leadService().delete(8);
 
-// 4. Update a Lead 
-// Simple fields (like String) can just set new data
+// 4. UPDATE
 lead.setName("Albert");
 lead.setLastName("Shtein");
 lead.setAddress("West Olympic Boulevard Apt. 100");
@@ -147,45 +147,25 @@ client.leadService().update(lead);
 
 **Company**
 
-The way of working with the Company is the same as with other entities.
-
 ```java
-//1. Create New Company
+//1. CREATE
 Company company = new Company();
-company.add_companyTitle("LLT Prizma");
-company.add_companyType(Company_type.PARTNER);
-company.add_employeesType(Employees_type.FROM_250_TO_500);
-company.add_industryType(Industry_type.BANKING);
+company.setAddress("USA, Delaware");
+company.setTitle("This is title"); 
+client.companyService().add(company);
 
-//2. Get company by ID
-Company company = client.getCempanyService().getCompanyById(2);
+//2. GET
+Company company = client.companyService().get(2);
 
-//3. Delete company by ID 
-client.getCempanyService().deleteCompanyById(3);
+//3. DELETE
+client.companyService().delete(4);
 
-//4.1. Update simple fields
-company.setBANKING_DETAILS("r/s 40702810865698252");
-company.setCOMPANY_TYPE(Company_type.SUPPLIER.getCode());
-company.setADDRESS("Olympic Boulevard Apt. 120");
-company.setCOMMENTS("Interested in price");
-
-//4.2. Update multiple fields Website
-Website website = company.getWEB().get(0);
-website.setVALUE("www.albert12.org");
-website.setVALUE_TYPE(Website_type.OTHER.getCode());
-List<Website> websitList = new ArrayList<>();
-websitList.add(website);
-company.setWEB(websitList);
-client.getCempanyService().updateCompany(company);
-
-//5. Add new multiple fields (for example, Email)
-Company company = client.getCempanyService().getCompanyById(2);
-List<Email> listEmail = new ArrayList<>();
-Email email = Email.builder()
-	.VALUE("srtur12@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
-listEmail.add(email);
-company.setEMAIL(listEmail);
-client.getCempanyService().updateCompany(company);
+//4. UPDATE
+company.setBankingDetails("r/s 40702810865698252");
+company.setCompanyType(CompanyType.SUPPLIER.getCode());
+company.setAddress("Olympic Boulevard Apt. 120");
+company.setComments("Interested in price");
+client.companyService().update(company);
 ```
 
 **Product**
