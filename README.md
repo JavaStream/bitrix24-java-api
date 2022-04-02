@@ -97,8 +97,6 @@ contact.setPhones(phoneList);
 contact.setAddress("USA, Delaware");
 contact.setComments("best contact");
 contact.setCompanyId("2");
-
-// save the contact in CRM
 client.contactService().add(contact);
 
 // 2. Get a Contact by ID (For example, 74)
@@ -113,48 +111,38 @@ contact.setName("Джон");
 client.contactService().update(contact);
 ```
 
+
 **Lead**
 
 ```java
-// 1.1. Create a new Lead	
+// 1. Create a new Lead	
 Lead lead = new Lead();
-lead.add_title("Torrentino");
-client.getLeadService().addNewLead(lead);
+lead.setTitle("Test2");
+lead.setSourceId(SourceIdType.ADVERTISING.getCode());
+lead.setAddress("England, Rosenberg str, 100");
+Phone phone = Phone.builder()
+		.value("89110225686").valueType(PhoneType.HOME.getCode()).build();
+List<Phone> listPhones = new ArrayList<>();
+listPhones.add(phone);
+lead.setPhones(listPhones);
+client.leadService().add(lead);
 
-// 1.2. Get lead by ID = 4
-Lead lead = client.getLeadService().getLeadById(4);
+// 2. Get a Lead by ID 
+Lead lead = client.leadService().get(2);
 
-// 1.3. Delete lead 
-client.getLeadService().deleteLeadById(4);
+// 3. Delete a Lead 
+client.leadService().delete(8);
 
-// 1.4. Update lead 
+// 4. Update a Lead 
 // Simple fields (like String) can just set new data
-lead.setNAME("Albert");
-lead.setLAST_NAME("Shtein");
-lead.setADDRESS("West Olympic Boulevard Apt. 100");
-lead.setCOMMENTS("Interested in price");
-lead.setSTATUS_ID(StatusID_type.NEW.getCode());
-lead.setCURRENCY_ID(CurrencyID_type.EUR.getCode());
-lead.setSOURCE_ID(SourceID_type.RECOMMENDATION.getCode());
-	
-// In multiple fields containing lists, the data is entered differently (for example, Phone, Email, Website, IM)
-// 1. Add a new Email. Do not specify ID and ID_Type (will be assigned to CRM itself)
-Email email = Email.builder()
-	.VALUE("albert@gmail.com").VALUE_TYPE(Email_type.PRIVATE.getCode()).build();
-List<Email> listEmail = new ArrayList<>();
-listEmail.add(email);
-lead.setEMAIL(listEmail);
-client.getLeadService().updateLead(lead);
-
-// 2. Change an existing Website (Get the Website object, set new values for Value and (or) Value_type). 
-// For example, I change the first website
-Website website = lead.getWEB().get(0);
-website.setVALUE("www.albert-best.org");
-website.setVALUE_TYPE(Website_type.OTHER.getCode());
-List<Website> websitList = new ArrayList<>();
-websitList.add(website);
-lead.setWEB(websitList);
-client.getLeadService().updateLead(lead);	
+lead.setName("Albert");
+lead.setLastName("Shtein");
+lead.setAddress("West Olympic Boulevard Apt. 100");
+lead.setComments("Interested in price");
+lead.setStatusId(StatusIdType.NEW.getCode());
+lead.setCurrencyId(CurrencyIdType.EUR.getCode());
+lead.setSourceId(SourceIdType.RECOMMENDATION.getCode());
+client.leadService().update(lead);
 ```
 
 **Company**
