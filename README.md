@@ -183,12 +183,12 @@ client.productService().update(product);
 
 **Product Section**
 ```java
-// Create
+// CREATE
 ProductSection productSection = new ProductSection();
 productSection.setSectionId(12); // Main category 
 client.productSectionService().add(productSection);
 
-// Get, Delete and Update 
+// GET, DELETE, UPDATE 
 ProductSection productSection = client.productSectionService().get(2);
 client.productSectionService().delete(2);
 client.productSectionService().update(productSection);
@@ -196,24 +196,19 @@ client.productSectionService().update(productSection);
 
 **Chats with a Leads**
 
-Soon we will add functionality for working with dialogs and messages.
-
 ```java
+Lead lead = client.leadService().get(42);                                      			  // Get a Lead (for example, id = 42)
+Chat chat = client.chatService().get(lead);                                        		  // Get the chat whith this Lead
+List<User> userList = client.chatService().getUsers(chat);                             	  // Get the list of users of this chat 
+List<User> userList = client.chatService().getListBusinessUsers();                     	  // Get a list of all business users
+client.chatService().muteNotifications(chat, ChatNotificationType.YES.getCode());    	  // Turn off chat notifications 
 
-Lead lead = client.getLeadService().getLeadById(42);                                      // Get a Lead (for example, id = 42)
-Chat chat = client.getChatService().getChat(lead);                                        // Get the chat whith this Lead
-List<User> userList = client.getChatService().getUsers(chat);                             // Get the list of users in this chat 
-List<User> userList = client.getChatService().getListBusinessUsers();                     // Get a list of all business users
-client.getChatService().muteNotifications(chat, ChatNotifications_type.YES.getCode());    // Turn off chat notifications 
-
-// Adding a new chat for Lead = 42. The field MESSAGE cannot be empty!
+// ADD NEW CHAT FOR LEAD. The field message cannot be empty.
 Chat chatNew = new Chat();
-chatNew.setCOLOR(ChatColors_type.AZURE.getCode());
-chatNew.setDESCRIPTION("Conversation with a client #42");
-chatNew.setMESSAGE("Hello customer #42!");
-chatNew.setTITLE("Customer " + lead.getTITLE());
+chatNew.setColor(ChatColorType.AZURE.getCode());
+chatNew.setDescription("Conversation with a client #40");
+chatNew.setMessage("Hello customer #40!");
+chatNew.setTitle("Customer " + lead.getTitle());
 
-client.getChatService().createChat(chatNew, lead, userList);
-
+client.chatService().createChat(chatNew, lead, userList);
 ```
-
