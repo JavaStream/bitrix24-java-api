@@ -43,7 +43,7 @@ QUICK START
 <dependency>
     <groupId>com.github.JavaStream</groupId>
     <artifactId>bitrix24-java-api</artifactId>
-    <version>1.3</version>
+    <version>v2022.1</version>
 </dependency>
 ```
 
@@ -89,51 +89,29 @@ EXAMPLES
 **Contact**  
 
 ```java
-// Create a new Contact
-Contact contact = new Contact();
+// 1. Create a new Contact (name and lastname are mandatory fields)
 
-// Name and lastName are mandatory fields. Without these parameters, the card cannot be saved.
-contact.add_name_and_lastName("Robert", "Kane");
-contact.setLAST_NAME("Edward");
-contact.setTYPE_ID(Type_id.CLIENT.getCode());
-contact.add_comments("He is the best");
-contact.add_post("Manager");
+Contact contact = new Contact("Robert", "Kane"); 
+contact.setTypeId(TypeIdContact.CLIENT.getCode());
+contact.setPhones(phoneList);
+contact.setAddress("USA, Delaware");
+contact.setComments("best contact");
+contact.setCompanyId("2");
 
-// Attach a company card (requires company ID)
-contact.add_company(2);
+// save the contact in CRM
+client.contactService().add(contact);
 
-// At the end Save the created contact in CRM
-client.getContactService().addNewContact(contact);
+// 2. Get a Contact by ID (For example, 74)
+Contact contact = client.contactService().get(74);
 
-// 1.2. Get the Contact by ID (For example, 74)
-Contact contact = client.getContactService().getContactById(74);
+// 3. Delete a Contact
+client.contactService().delete(72);
 
-// 1.3. Delete Contact
-client.getContactService().deleteContactById(72);
-
-// Update Contact
-contact.setCOMPANY_ID("2");
-contact.setNAME("John");
-
-// In multiple fields containing lists, the data is entered differently (for example, Phone)
-// 1. Add a new phone. Do not specify ID and ID_Type (will be assigned to CRM itself)
-Phone phone = Phone.builder()
-      .VALUE("600-00-00").VALUE_TYPE(Phone_type.MOBILE.getCode()).build();
-List<Phone> listPhone = new ArrayList<>();
-listPhone.add(phone);
-contact.setPHONE(listPhone);
-client.getContactService().updateContact(contact);
-
-// 2. Change an existing phone (Get the Phone object, set new values for Value and (or) Value_type). 
-// For example, I change the first phone
-Phone phone = contact.getPHONE().get(0);
-phone.setVALUE("222-22-22");
-List<Phone> phoneList = new ArrayList<>();
-phoneList.add(phone);
-contact.setPHONE(phoneList);
-client.getContactService().updateContact(contact);
+// 4. Update a Contact
+contact.setCompanyId("2");
+contact.setName("Джон");
+client.contactService().update(contact);
 ```
-
 
 **Lead**
 
