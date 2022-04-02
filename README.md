@@ -89,7 +89,7 @@ EXAMPLES
 **Contact**  
 
 ```java
-// 1. CREATE (name and lastname are mandatory fields)
+// CREATE (name and lastname are mandatory fields)
 Contact contact = new Contact("Robert", "Kane"); 
 contact.setTypeId(TypeIdContact.CLIENT.getCode());
 contact.setPhones(phoneList);
@@ -98,13 +98,13 @@ contact.setComments("best contact");
 contact.setCompanyId("2");
 client.contactService().add(contact);
 
-// 2. GET
+// GET
 Contact contact = client.contactService().get(74);
 
-// 3. DELETE
+// DELETE
 client.contactService().delete(72);
 
-// 4. UPDATE
+// UPDATE
 contact.setCompanyId("2");
 contact.setName("Джон");
 client.contactService().update(contact);
@@ -114,7 +114,7 @@ client.contactService().update(contact);
 **Lead**
 
 ```java
-// 1. CREATE	
+// CREATE	
 Lead lead = new Lead();
 lead.setTitle("Test2");
 lead.setSourceId(SourceIdType.ADVERTISING.getCode());
@@ -128,13 +128,13 @@ listPhones.add(phone);
 lead.setPhones(listPhones);
 client.leadService().add(lead);
 
-// 2. GET
+// GET
 Lead lead = client.leadService().get(2);
 
-// 3. DELETE
+// DELETE
 client.leadService().delete(8);
 
-// 4. UPDATE
+// UPDATE
 lead.setName("Albert");
 lead.setLastName("Shtein");
 lead.setAddress("West Olympic Boulevard Apt. 100");
@@ -148,19 +148,19 @@ client.leadService().update(lead);
 **Company**
 
 ```java
-//1. CREATE
+// CREATE
 Company company = new Company();
 company.setAddress("USA, Delaware");
 company.setTitle("This is title"); 
 client.companyService().add(company);
 
-//2. GET
+// GET
 Company company = client.companyService().get(2);
 
-//3. DELETE
+// DELETE
 client.companyService().delete(4);
 
-//4. UPDATE
+// UPDATE
 company.setBankingDetails("r/s 40702810865698252");
 company.setCompanyType(CompanyType.SUPPLIER.getCode());
 company.setAddress("Olympic Boulevard Apt. 120");
