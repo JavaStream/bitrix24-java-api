@@ -1,4 +1,4 @@
-package com.javastream.lead;
+package com.javastream.configs;
 
 public class Configs {
     public static final String token = "7c26pkalmsskbaf6";
