@@ -1,17 +1,22 @@
 package com.javastream.examples.lead;
 
 import com.javastream.Client;
+import com.javastream.configs.Configs;
 
-/*  Created by JavaStream   */
-
+/**
+ * DeleteLeadById.
+ *
+ * @author javastream
+ */
 public class DeleteLeadById {
 
-    public void start() {
+    public static void main(String[] args) {
+        Client client = new Client(
+                Configs.token,
+                Configs.account,
+                Configs.restId
+        );
 
-        // Инициализация клиента (вебхук токен и аккаунт CRM)
-        Client client = new Client("token", "your-account.bitrix24.ru", 1);
-
-        // Удаляет Лид по его ID (в примере удаляется лид с id=8)
         client.leadService().delete(8);
     }
 }
