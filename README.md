@@ -170,28 +170,28 @@ client.companyService().update(company);
 
 **Product**
 ```java
-// Create
+// CREATE
 Product product = new Product();
-product.setNAME("MainRouter");
-client.getProductService().addProduct(product);
+product.setName("MainRouter");
+client.productService().add(product);
 
-// Get, Delete and Update 
-Product product = client.getProductService().getProduc(4);
-client.getProductService().deleteProduct(6);
-client.getProductService().updateProduct(product);
+// GET, DELETE, UPDATE 
+Product product = client.productService().get(4);
+client.productService().delete(6);
+client.productService().update(product);
 ```
 
 **Product Section**
 ```java
 // Create
 ProductSection productSection = new ProductSection();
-productSection.add_name("Auto");
-productSection.setSECTION_ID(12);  // ID of Main category
+productSection.setSectionId(12); // Main category 
+client.productSectionService().add(productSection);
 
 // Get, Delete and Update 
-ProductSection productSection = client.getProductSectionService().getProductSection(16);
-client.getProductSectionService().deleteProductSection(2);
-client.getProductSectionService().updateProductSection(productSection);
+ProductSection productSection = client.productSectionService().get(2);
+client.productSectionService().delete(2);
+client.productSectionService().update(productSection);
 ```
 
 **Chats with a Leads**
