@@ -1,22 +1,27 @@
 package com.javastream.examples.company;
 
 import com.javastream.Client;
+import com.javastream.configs.Configs;
 import com.javastream.entity.Company;
 
-/*  Created by JavaStream   */
-
+/**
+ * AddNewCompany.
+ *
+ * @author javastream
+ */
 public class AddNewCompany {
 
-    public void start() {
+    public static void main(String[] args) {
+        Client client = new Client(
+                Configs.token,
+                Configs.account,
+                Configs.restId
+        );
 
-        // Инициализация клиента (вебхук токен и аккаунт CRM)
-         Client client = new Client("token", "your-account.bitrix24.ru", 1);
-
-        // Создание ного Лида
         Company company = new Company();
+        company.setAddress("USA, Delaware");
+        company.setTitle("This is title");
 
-        // Сохранение Лида
         client.companyService().add(company);
     }
-
 }

@@ -18,7 +18,11 @@ public class CreateNewContact {
         Contact contact = new Contact("Роберт", "Кейн");
 
         // Тип контакта - > в Type_id_contact можно выбрать 1 из 4 вариантов
+
         contact.setTypeId(TypeIdContact.CLIENT.getCode());
+        contact.setAddress("USA, Delaware");
+        contact.setComments("best contact");
+        contact.setCompanyId("2");
 
         // Сохраняем созданный контакт в CRM
         client.contactService().add(contact);
