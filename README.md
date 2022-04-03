@@ -43,7 +43,7 @@ QUICK START
 <dependency>
     <groupId>com.github.JavaStream</groupId>
     <artifactId>bitrix24-java-api</artifactId>
-    <version>v2022.1</version>
+    <version>v2022.2</version>
 </dependency>
 ```
 
