@@ -1,15 +1,20 @@
 package com.javastream.service;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.javastream.entity.Lead;
 import com.javastream.uriParamsCreator.UriParamsCreator;
 import com.javastream.utils.PushRunner;
 import com.javastream.utils.lead.ParamLeadUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * LeadService.
@@ -24,6 +29,7 @@ public class LeadService {
     private final static String GET_METHOD = "crm.lead.get";
     private final static String DELETE_METHOD = "crm.lead.delete";
     private final static String UPDATE_METHOD = "crm.lead.update";
+    private final static String LIST_METHOD = "crm.lead.list";
 
     public void add(Lead lead) {
         logger.info("Request: Add a new lead: {}", lead.getId());
@@ -60,5 +66,16 @@ public class LeadService {
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while updating lead", e);
         }
+    }
+
+    public List<Lead> getAll() {
+        logger.info("Request: Get list of leads");
+        UriParamsCreator params = new ParamLeadUtils().getAllMethod();
+        JSONObject json = PushRunner.get(params, LIST_METHOD);
+        JSONArray result = json.getJSONArray("result");
+        Gson gson = new Gson();
+
+        Type type = new TypeToken<ArrayList<Lead>>(){}.getType();
+        return gson.fromJson(result.toString(), type);
     }
 }

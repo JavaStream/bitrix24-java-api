@@ -23,36 +23,36 @@ public class PushRunner {
     private final static String SLASH_PATTERN = "/";
     private final static String REST_FIELD = "rest";
 
-    public static void post(UriParamsCreator params, String metod) {
+    public static void post(UriParamsCreator params, String method) {
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         String url = HTTPS_ADDRESS + getAccount() + SLASH_PATTERN + REST_FIELD + SLASH_PATTERN + getRestID() + SLASH_PATTERN +
-                getToken() + SLASH_PATTERN + metod + params;
+                getToken() + SLASH_PATTERN + method + params;
 
         HttpPost request = new HttpPost(url);
         request.addHeader("content-type", "application/json");
 
         try {
             HttpResponse response = httpClient.execute(request);
-            logger.info("Request {}, status of response: {}", metod, response.getStatusLine().getStatusCode());
+            logger.info("Request {}, status of response: {}", method, response.getStatusLine().getStatusCode());
         } catch (Exception e) {
-            logger.error("An error occurred while getting HttpResponse, method: {}", metod, e);
+            logger.error("An error occurred while getting HttpResponse, method: {}", method, e);
         }
     }
 
-    public static JSONObject get(UriParamsCreator params, String metod) {
+    public static JSONObject get(UriParamsCreator params, String method) {
         JSONObject jsonResult = null;
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         String url = HTTPS_ADDRESS + getAccount() + SLASH_PATTERN + REST_FIELD + SLASH_PATTERN + getRestID() + SLASH_PATTERN +
-                getToken() + SLASH_PATTERN + metod + params;
+                getToken() + SLASH_PATTERN + method + params;
 
         HttpPost request = new HttpPost(url);
         request.addHeader("content-type", "application/json");
 
         try {
             HttpResponse response = httpClient.execute(request);
-            logger.info("Request {}, status of response: {}", metod, response.getStatusLine().getStatusCode());
+            logger.info("Request {}, status of response: {}", method, response.getStatusLine().getStatusCode());
 
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
@@ -62,7 +62,7 @@ public class PushRunner {
                 }
             }
         } catch (Exception e) {
-            logger.error("An error occurred while getting HttpResponse, method: {}", metod, e);
+            logger.error("An error occurred while getting HttpResponse, method: {}", method, e);
         }
         return jsonResult;
     }

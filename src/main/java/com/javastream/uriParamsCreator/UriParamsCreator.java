@@ -44,7 +44,8 @@ public class UriParamsCreator {
     }
 
     public String build() {
-        this.builder.deleteCharAt(builder.lastIndexOf(AMPERSAND_PATTERN));
+        if (builder.toString().contains(AMPERSAND_PATTERN))
+            this.builder.deleteCharAt(builder.lastIndexOf(AMPERSAND_PATTERN));
         return builder.toString();
     }
 
