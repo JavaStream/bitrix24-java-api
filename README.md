@@ -131,6 +131,9 @@ client.leadService().add(lead);
 // GET
 Lead lead = client.leadService().get(2);
 
+// GET ALL
+List<Lead> leads = client.leadService().getAll();
+        
 // DELETE
 client.leadService().delete(8);
 
