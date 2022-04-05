@@ -43,7 +43,7 @@ QUICK START
 <dependency>
     <groupId>com.github.JavaStream</groupId>
     <artifactId>bitrix24-java-api</artifactId>
-    <version>v2022.2</version>
+    <version>v2022.3</version>
 </dependency>
 ```
 
@@ -159,6 +159,9 @@ client.companyService().add(company);
 
 // GET
 Company company = client.companyService().get(2);
+
+// GET ALL
+List<Company> companies = client.companyService().getAll();  
 
 // DELETE
 client.companyService().delete(4);
