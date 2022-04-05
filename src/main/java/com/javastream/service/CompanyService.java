@@ -1,15 +1,20 @@
 package com.javastream.service;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.javastream.entity.Company;
 import com.javastream.uriParamsCreator.UriParamsCreator;
 import com.javastream.utils.PushRunner;
 import com.javastream.utils.company.ParamCompanyUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CompanyService.
@@ -24,6 +29,7 @@ public class CompanyService {
     private final static String GET_METHOD = "crm.company.get";
     private final static String DELETE_METHOD = "crm.company.delete";
     private final static String UPDATE_METHOD = "crm.company.update";
+    private final static String LIST_METHOD = "crm.company.list";
 
     public void add(Company company) {
         logger.info("Request to add a new company: {}", company.getTitle());
@@ -58,5 +64,16 @@ public class CompanyService {
         } catch (UnsupportedEncodingException e) {
             logger.error("An error occurred while updating company", e);
         }
+    }
+
+    public List<Company> getAll() {
+        logger.info("Request: Get list of company");
+        UriParamsCreator params = new ParamCompanyUtils().getAllMethod();
+        JSONObject json = PushRunner.get(params, LIST_METHOD);
+        JSONArray result = json.getJSONArray("result");
+        Gson gson = new Gson();
+
+        Type type = new TypeToken<ArrayList<Company>>(){}.getType();
+        return gson.fromJson(result.toString(), type);
     }
 }
