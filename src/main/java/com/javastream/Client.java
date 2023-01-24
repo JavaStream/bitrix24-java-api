@@ -8,6 +8,7 @@ public class Client {
    private final LeadService leadService = new LeadService();
    private final CompanyService companyService = new CompanyService();
    private final ContactService contactService = new ContactService();
+   private final DealService dealService = new DealService();
    private final ProductSectionService productSectionService = new ProductSectionService();
    private final ProductService productService = new ProductService();
    private final ChatService chatService = new ChatService();
@@ -20,6 +21,10 @@ public class Client {
 
     public ContactService contactService() {
         return contactService;
+    }
+
+    public DealService dealService() {
+        return dealService;
     }
 
     public LeadService leadService() {
