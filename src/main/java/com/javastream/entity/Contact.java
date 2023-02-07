@@ -6,6 +6,7 @@ import com.javastream.entity.model.Messenger;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.model.Website;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.util.Date;
@@ -18,17 +19,15 @@ import java.util.List;
  *
  * @author javastream
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
-public class Contact {
+public class Contact extends Entity{
 
     public Contact(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }
-
-    @SerializedName("ID")
-    private Integer id;
 
     @SerializedName("NAME")
     private String name;

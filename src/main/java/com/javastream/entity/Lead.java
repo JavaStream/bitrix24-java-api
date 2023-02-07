@@ -6,6 +6,7 @@ import com.javastream.entity.model.Messenger;
 import com.javastream.entity.model.Phone;
 import com.javastream.entity.model.Website;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.util.List;
@@ -15,11 +16,10 @@ import java.util.List;
  *
  * @author javastream
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
-public class Lead {
-    @SerializedName("ID")
-    private Integer id;
+public class Lead extends Entity{
 
     @SerializedName("TITLE")
     private String title;

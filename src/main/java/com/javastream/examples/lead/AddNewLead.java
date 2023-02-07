@@ -34,6 +34,7 @@ public class AddNewLead {
                 .value("79310225686").valueType(PhoneType.HOME.getCode()).build();
         List<Phone> listPhones = new ArrayList<>();
         listPhones.add(phone);
+        lead.setOpportunity("0");
         lead.setPhones(listPhones);
 
         client.leadService().add(lead);

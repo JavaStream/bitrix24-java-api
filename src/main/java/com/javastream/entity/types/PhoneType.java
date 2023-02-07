@@ -14,7 +14,7 @@ public enum PhoneType {
     MAILING("MAILING"),
     OTHER("OTHER");
 
-    private String code;
+    private final String code;
 
     PhoneType(String code) {
         this.code = code;

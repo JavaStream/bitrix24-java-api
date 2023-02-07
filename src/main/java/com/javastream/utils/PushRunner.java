@@ -17,13 +17,14 @@ import java.io.InputStreamReader;
 
 public class PushRunner {
 
-    private static Logger logger = LoggerFactory.getLogger(PushRunner.class);
+    private static final Logger logger = LoggerFactory.getLogger(PushRunner.class);
 
     private final static String HTTPS_ADDRESS = "https://";
     private final static String SLASH_PATTERN = "/";
     private final static String REST_FIELD = "rest";
 
-    public static void post(UriParamsCreator params, String method) {
+    public static JSONObject post(UriParamsCreator params, String method) {
+        JSONObject jsonResult = null;
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         String url = HTTPS_ADDRESS + getAccount() + SLASH_PATTERN + REST_FIELD + SLASH_PATTERN + getRestID() + SLASH_PATTERN +
@@ -35,9 +36,18 @@ public class PushRunner {
         try {
             HttpResponse response = httpClient.execute(request);
             logger.info("Request {}, status of response: {}", method, response.getStatusLine().getStatusCode());
+
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                String result;
+                while ((result = rd.readLine()) != null) {
+                    jsonResult = new JSONObject(result);
+                }
+            }
         } catch (Exception e) {
             logger.error("An error occurred while getting HttpResponse, method: {}", method, e);
         }
+        return jsonResult;
     }
 
     public static JSONObject get(UriParamsCreator params, String method) {

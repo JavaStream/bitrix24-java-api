@@ -3,6 +3,8 @@ package com.javastream.service;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.javastream.entity.Lead;
+import com.javastream.entity.model.Phone;
+import com.javastream.service.exceptions.LeadServiceException;
 import com.javastream.uriParamsCreator.UriParamsCreator;
 import com.javastream.utils.PushRunner;
 import com.javastream.utils.lead.ParamLeadUtils;
@@ -10,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ import java.util.List;
  *
  * @author javastream
  */
-public class LeadService {
+public final class LeadService {
 
-    private Logger logger = LoggerFactory.getLogger(LeadService.class);
+    private final Logger logger = LoggerFactory.getLogger(LeadService.class);
 
     private final static String ADD_METHOD = "crm.lead.add";
     private final static String GET_METHOD = "crm.lead.get";
@@ -32,11 +33,20 @@ public class LeadService {
     private final static String LIST_METHOD = "crm.lead.list";
 
     public void add(Lead lead) {
-        logger.info("Request: Add a new lead: {}", lead.getId());
+        try {
+            this.validate(lead);
+        } catch (LeadServiceException e) {
+            throw new RuntimeException(e);
+        }
+        logger.info("Request: Add a new lead.");
         try {
             UriParamsCreator params = new ParamLeadUtils().addMethod(lead);
-            PushRunner.post(params, ADD_METHOD);
-        } catch (UnsupportedEncodingException e) {
+            JSONObject result = PushRunner.post(params, ADD_METHOD);
+            assert result != null;
+            Integer leadId = Integer.parseInt(result.get("result").toString());
+            lead.setId(leadId);
+            logger.info("Added new lead with ID: " + leadId);
+        } catch (UnsupportedEncodingException|NumberFormatException e) {
             logger.error("An error occurred while adding new lead", e);
         }
     }
@@ -77,5 +87,17 @@ public class LeadService {
 
         Type type = new TypeToken<ArrayList<Lead>>(){}.getType();
         return gson.fromJson(result.toString(), type);
+    }
+
+    private void validate(Lead lead) throws LeadServiceException {
+        if(lead.getOpportunity() == null) {
+            logger.warn("Lead opportunity is not set, setting 0 as a default.");
+            lead.setOpportunity("0");
+        }
+        for (Phone p:lead.getPhones()) {
+            if (p.getValueType() == null) {
+                throw new LeadServiceException("Phone type for phone number " + p.getValue() + " is not set.");
+            }
+        }
     }
 }
